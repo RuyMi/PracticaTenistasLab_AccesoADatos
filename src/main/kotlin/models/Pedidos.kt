@@ -12,5 +12,6 @@ data class Pedidos(
     val fechaSalidaProgramada: LocalDate,
     val fechaEntrega: LocalDate,
     val precio: Double,
-    val uuidEncordador: String
+    val uuidEncordador: String,
+    val tareas: List<Tarea>
 )
