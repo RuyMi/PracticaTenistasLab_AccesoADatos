@@ -1,6 +1,6 @@
 package models.enums
 
-enum class TipoPerfil {
-    USUARIO, ENCORDADOR, ADMINISTRADOR
+enum class TipoPerfil(val num: String) {
+    USUARIO("Usuario"), ENCORDADOR("Encordador"), ADMINISTRADOR("Administrador")
 
 }
