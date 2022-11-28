@@ -21,8 +21,8 @@ object UsuarioTable : IntIdTable("USUARIO") {
     //DAO de la entidad Usuario
 
 
-class Usuario(id: EntityID<Int>): IntEntity(id){
-    companion object : IntEntityClass<Usuario>(UsuarioTable)
+class UsuarioDao(id: EntityID<Int>): IntEntity(id){
+    companion object : IntEntityClass<UsuarioDao>(UsuarioTable)
     var uuid by UsuarioTable.uuid
     var nombre by UsuarioTable.nombre
     var apellido by UsuarioTable.apellido

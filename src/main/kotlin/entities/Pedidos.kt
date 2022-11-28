@@ -16,10 +16,8 @@ object PedidosTable : IntIdTable("PRODUCTO") {
     val fechaSalidaProgramada = date("fechaSalidaProgramada")
     val fechaEntrega = date("fechaEntrega")
     val precio = double("precio")
-
-    val maquinaAsociada = reference("uuid", MaquinaEncordarTable).nullable()
-    val uuidEncordador = reference("uuid", EncordadorTable).nullable()
-    val tareas = reference("uuid", TareasTable).nullable()
+    val tareas = reference("uuid", TareaTable).nullable()
+    val productos = reference("uuid", ProductoTable)
 
 
     //val id = integer("id").autoIncrement().entityId()
@@ -40,8 +38,7 @@ class PedidosDao(id: EntityID<Int>): IntEntity(id) {
     var fechaEntrega by PedidosTable.fechaEntrega
     var precio by PedidosTable.precio
 
-    val maquinaAsociada by MaquinaEncordarDao optionalReferrersOn PedidosTable.maquinaAsociada
-
+    val tareas by TareaDao optionalReferrersOn PedidosTable.tareas
 
 }
 
