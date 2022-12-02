@@ -1,7 +1,42 @@
-fun main(args: Array<String>) {
-    println("Hello World!")
+import config.AppConfig
+import db.DataBaseManager
+import entities.MaquinaPersonalizacionDao
+import kotlinx.coroutines.runBlocking
+import models.Maquina
+import org.jetbrains.exposed.sql.idParam
+import repository.MaquinaPersonalizacionRepository.MaquinaPersonalizacionRepositoryImpl
+import java.time.LocalDate
+import java.util.*
 
-    // Try adding program arguments via Run/Debug configuration.
-    // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
-    println("Program arguments: ${args.joinToString()}")
+
+fun main(args: Array<String>) = runBlocking {
+    initDataBase()
+    var maquina = MaquinaPersonalizacionDao
+    var repo = MaquinaPersonalizacionRepositoryImpl(maquina)
+    var hola=integer
+    var prueba = Maquina.MaquinaPersonalizacion(
+        idParam()
+        numSerie = UUID.randomUUID(),
+        marca = "Hola",
+        modelo = "hola",
+        fechaAdquisicion = LocalDate.now(),
+        swingweight = true,
+        balance = 20.0,
+        rigidez = 20.0
+
+
+    )
+
+    repo.save(prueba)
+    val hola = repo.findAll()
+    println(hola)
+}
+
+fun initDataBase() {
+    val appConfig = AppConfig.fromPropertiesFile("src/main/resources/config.properties")
+    println("Configuración: $appConfig")
+
+    // Iniciamos la base de datos con la configuracion que hemos leido
+    DataBaseManager.init(appConfig)
+
 }

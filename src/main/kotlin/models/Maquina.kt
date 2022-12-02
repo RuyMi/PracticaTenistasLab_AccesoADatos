@@ -1,13 +1,14 @@
 package models
 
+import org.jetbrains.exposed.dao.id.EntityID
 import java.time.LocalDate
 import java.util.*
 
 sealed class Maquina() {
 
     data class MaquinaPersonalizacion(
-
-        val numSerie: UUID,
+        val id: EntityID<Int>,
+        val numSerie: UUID=UUID.randomUUID(),
         val marca: String,
         val modelo: String,
         val fechaAdquisicion: LocalDate,
@@ -17,6 +18,7 @@ sealed class Maquina() {
     ){
     }
     data class MaquinaEncordadora(
+        val id: Int,
         val numSerie: UUID,
         val marca: String,
         val modelo: String,
@@ -25,4 +27,8 @@ sealed class Maquina() {
         val tensionMaxima: Double,
         val tensionMinima: Double
     )
+
+
+
+
 }
