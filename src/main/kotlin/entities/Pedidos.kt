@@ -1,6 +1,6 @@
 package entities
 
-import entities.ProductoTable.uniqueIndex
+//import entities.ProductoTable.uniqueIndex
 import models.enums.TipoEstado
 import models.enums.TipoPerfil
 import org.jetbrains.exposed.dao.IntEntity
