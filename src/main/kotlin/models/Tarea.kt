@@ -1,29 +1,15 @@
 package models
 
-import models.enums.TipoEncordado
-import models.enums.TipoNudos
 import java.util.*
 
-sealed class Tarea(){
-    data class Encordado(
-        val uuid: UUID,
-        val raqueta: List<Producto>,
-        val precio: Double,
-        val encordado: TipoEncordado,
-        val nudos: TipoNudos
-    ){}
-
-    data class Personalizacion(
-        val uuid: UUID,
-        val raqueta: List<Producto>,
-        val precio: Double,
-        val peso: Double,
-        val balance: Double,
-        val rigidez: Double
-    )
-
-    data class Adquisicion(
-        val uuid: UUID,
-        val precio: Double,
-    )
+data class Tarea(
+    val id: Int,
+    val uuidTarea: UUID,
+    val producto: Producto,
+    val precio: Double,
+    val descripcion: String,
+    val maquinaEncordar: Maquina.MaquinaEncordadora?,
+    val maquinaPersonalizacion: Maquina.MaquinaPersonalizacion?,
+    val turno:Turno
+) {
 }
