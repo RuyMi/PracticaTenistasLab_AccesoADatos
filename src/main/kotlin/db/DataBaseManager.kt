@@ -3,8 +3,8 @@ package db
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import config.AppConfig
-import entities.MaquinaPersonalizacionTable
-
+import entities.*
+import models.Maquina
 import mu.KotlinLogging
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
@@ -54,7 +54,7 @@ object DataBaseManager {
         if (appConfig.jdbcshowSQL)
             addLogger(StdOutSqlLogger) // Para que se vea el log de consulas a la base de datos
 
-        SchemaUtils.create(MaquinaPersonalizacionTable)
+        SchemaUtils.create( TurnoTable, TareaTable, PedidosTable,  MaquinaPersonalizacionTable)
         logger.debug("Tables created")
     }
 }

@@ -5,7 +5,7 @@ import org.jetbrains.exposed.dao.IntEntity
 import org.jetbrains.exposed.dao.IntEntityClass
 import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.dao.id.IntIdTable
-/*
+
 object UsuarioTable : IntIdTable("USUARIO") {
     val uuid = uuid("uuid").uniqueIndex()
     val nombre = varchar("nombre", 100)
@@ -21,8 +21,8 @@ object UsuarioTable : IntIdTable("USUARIO") {
     //DAO de la entidad Usuario
 
 
-class Usuario(id: EntityID<Int>): IntEntity(id){
-    companion object : IntEntityClass<Usuario>(UsuarioTable)
+class UsuarioDao(id: EntityID<Int>): IntEntity(id){
+    companion object : IntEntityClass<UsuarioDao>(UsuarioTable)
     var uuid by UsuarioTable.uuid
     var nombre by UsuarioTable.nombre
     var apellido by UsuarioTable.apellido
@@ -33,4 +33,4 @@ class Usuario(id: EntityID<Int>): IntEntity(id){
 
 
 
-}*/
+}

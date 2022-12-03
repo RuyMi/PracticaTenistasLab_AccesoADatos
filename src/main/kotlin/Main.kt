@@ -13,9 +13,8 @@ fun main(args: Array<String>) = runBlocking {
     initDataBase()
     var maquina = MaquinaPersonalizacionDao
     var repo = MaquinaPersonalizacionRepositoryImpl(maquina)
-    var hola=integer
     var prueba = Maquina.MaquinaPersonalizacion(
-        idParam()
+        0,
         numSerie = UUID.randomUUID(),
         marca = "Hola",
         modelo = "hola",
@@ -26,7 +25,6 @@ fun main(args: Array<String>) = runBlocking {
 
 
     )
-
     repo.save(prueba)
     val hola = repo.findAll()
     println(hola)

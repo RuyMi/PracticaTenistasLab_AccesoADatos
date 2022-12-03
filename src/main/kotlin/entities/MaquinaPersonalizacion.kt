@@ -14,7 +14,7 @@ import org.jetbrains.exposed.dao.id.UUIDTable
 import org.jetbrains.exposed.sql.javatime.date
 import java.util.*
 
-object MaquinaPersonalizacionTable : IntIdTable("MaquinaPerso") {
+object MaquinaPersonalizacionTable : IntIdTable("MAQUINAPERSO") {
 
     val numSerie = uuid("numSerie").uniqueIndex()
     val marca = varchar("marca", 100)
