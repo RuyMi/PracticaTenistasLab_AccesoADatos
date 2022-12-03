@@ -9,15 +9,15 @@ import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.dao.id.IntIdTable
 import org.jetbrains.exposed.sql.javatime.date
 
-object PedidosTable : IntIdTable("PRODUCTO") {
+object PedidosTable : IntIdTable("PEDIDOS") {
     val uuid = uuid("uuid").uniqueIndex()
     val estado = enumeration<TipoEstado>("estado")
     val fechaEntrada = date("fechaEntrada")
     val fechaSalidaProgramada = date("fechaSalidaProgramada")
     val fechaEntrega = date("fechaEntrega")
     val precio = double("precio")
-    val tareas = reference("uuid", TareaTable).nullable()
-    val productos = reference("uuid", ProductoTable)
+    val tareas = reference("uuid_tarea", TareaTable).nullable()
+    //val productos = reference("uuid", ProductoTable)
 
 
     //val id = integer("id").autoIncrement().entityId()

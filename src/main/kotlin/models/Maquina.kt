@@ -7,7 +7,7 @@ import java.util.*
 sealed class Maquina() {
 
     data class MaquinaPersonalizacion(
-        val id: EntityID<Int>,
+        val id: Int,
         val numSerie: UUID=UUID.randomUUID(),
         val marca: String,
         val modelo: String,

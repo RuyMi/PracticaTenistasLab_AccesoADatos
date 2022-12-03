@@ -31,7 +31,6 @@ class MaquinaPersonalizacionRepositoryImpl(private val maquinaPerDao: IntEntityC
     override fun save(entity: Maquina.MaquinaPersonalizacion): Maquina.MaquinaPersonalizacion = transaction{
 
         val existe = maquinaPerDao.findById(entity.id)
-        //Esta alrternativa let/run es muy usada en Kotlin, como el if else...
         existe?.let {
             update(entity, existe)
         } ?: run {

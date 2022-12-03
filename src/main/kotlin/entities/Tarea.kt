@@ -10,12 +10,12 @@ import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.dao.id.IntIdTable
 import org.jetbrains.exposed.sql.javatime.date
 
-object TareaTable : IntIdTable("PRODUCTO") {
+object TareaTable : IntIdTable("TAREA") {
     val uuid = uuid("uuid").uniqueIndex()
-    val raqueta = reference("uuid", ProductoTable)
+    val raqueta = reference("uuid_producto", ProductoTable)
     val precio = double("precio")
-    val maquinaEncordar = reference("uuid", MaquinaEncordarTable).nullable()
-    val maquinaPersonalizacion = reference("uuid", MaquinaPersonalizacionTable).nullable()
+    val maquinaEncordar = reference("uuid_maquinaE", MaquinaEncordarTable).nullable()
+    val maquinaPersonalizacion = reference("uuid_maquinaP", MaquinaPersonalizacionTable).nullable()
 
 
 

@@ -5,7 +5,7 @@ import models.Maquina
 
 fun MaquinaPersonalizacionDao.fromMaquinaPersonalizacionDaoToMaquinaPersonalizacion(): Maquina.MaquinaPersonalizacion {
     return  Maquina.MaquinaPersonalizacion(
-        id=id,
+        id=id.value,
         numSerie = numSerie,
         marca =marca,
         modelo =modelo,
