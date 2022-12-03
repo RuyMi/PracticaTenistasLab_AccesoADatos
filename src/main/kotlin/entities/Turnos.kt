@@ -11,9 +11,9 @@ import org.jetbrains.exposed.dao.id.IntIdTable
 import org.jetbrains.exposed.sql.javatime.date
 
 object TurnoTable : IntIdTable("TURNOS") {
-    val uuid = uuid("uuid").uniqueIndex()
-    val tareas = reference("uuid_tarea", TareaTable).nullable()
-    val empleado = reference("uuid_empleado", UsuarioTable).nullable()
+    val uuid = uuid("uuid")
+    val tareas = reference("uuid_tarea", TareaTable)
+    val empleado = reference("uuid_empleado", UsuarioTable)
 
 
 
@@ -27,11 +27,10 @@ object TurnoTable : IntIdTable("TURNOS") {
 class TurnoDao(id: EntityID<Int>): IntEntity(id) {
     companion object : IntEntityClass<TurnoDao>(TurnoTable)
 
-    var uuid by TareaTable.uuid
+    var uuid by TurnoTable.uuid
 
-    val tareas by TareaDao optionalReferrersOn TurnoTable.tareas
-    val empleado by TareaDao optionalReferrersOn TurnoTable.empleado
-
+    val tareas by TareaDao backReferencedOn  TurnoTable.tareas
+    val empleado by UsuarioDao backReferencedOn TurnoTable.empleado
 
 
 

@@ -1,24 +1,23 @@
 package entities
 
-import entities.PedidosDao.Companion.optionalReferrersOn
-import entities.ProductoTable.uniqueIndex
-import models.enums.TipoEstado
-import models.enums.TipoPerfil
+
+import entities.MaquinaPersonalizacionDao.Companion.backReferencedOn
+import entities.MaquinaPersonalizacionDao.Companion.optionalReferrersOn
 import org.jetbrains.exposed.dao.IntEntity
 import org.jetbrains.exposed.dao.IntEntityClass
 import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.dao.id.IntIdTable
-import org.jetbrains.exposed.sql.javatime.date
+import org.jetbrains.exposed.sql.Table.Dual.references
+
 
 object TareaTable : IntIdTable("TAREA") {
-    val uuid = uuid("uuid").uniqueIndex()
-    val raqueta = reference("uuid_producto", ProductoTable)
+    val uuidTarea = uuid("uuid").uniqueIndex()
+    val producto = reference("uuid_producto", ProductoTable).nullable()
     val precio = double("precio")
-    val maquinaEncordar = reference("uuid_maquinaE", MaquinaEncordarTable).nullable()
-    val maquinaPersonalizacion = reference("uuid_maquinaP", MaquinaPersonalizacionTable).nullable()
-
-
-
+    val descripcion=varchar("Descripcion",150)
+    val maquinaEncordar = reference("numSerie", MaquinaEncordarTable).nullable()
+    val maquinaPersonalizacion = reference("numSerie", MaquinaPersonalizacionTable).nullable()
+    val turno=reference("uuid_turno",TurnoTable)
 
 }
 
@@ -29,12 +28,14 @@ object TareaTable : IntIdTable("TAREA") {
 class TareaDao(id: EntityID<Int>): IntEntity(id) {
     companion object : IntEntityClass<TareaDao>(TareaTable)
 
-    var uuid by TareaTable.uuid
-    var raqueta by TareaTable.raqueta
+    var uuidTarea by TareaTable.uuidTarea
+    val producto by ProductoDao backReferencedOn TareaTable.producto
     var precio by TareaTable.precio
+    var descripcion by TareaTable.descripcion
 
-    val maquinaPersonalizacion by TareaDao optionalReferrersOn PedidosTable.tareas
-    val maquinaEncordar by TareaDao optionalReferrersOn TareaTable.maquinaEncordar
+    val maquinaEncordar by MaquinaEncordarDao backReferencedOn TareaTable.maquinaEncordar
+    val maquinaPersonalizacion by MaquinaPersonalizacionDao backReferencedOn TareaTable.maquinaPersonalizacion
+
 
 
 
