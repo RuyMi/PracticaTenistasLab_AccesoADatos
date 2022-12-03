@@ -6,11 +6,11 @@ import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.dao.id.IntIdTable
 
 object ProductoTable : IntIdTable("PRODUCTO") {
-    val uuid = uuid("uuid").uniqueIndex()
+    val uuid = uuid("uuid_producto").uniqueIndex()
     val marca = varchar("marca", 100)
     val modelo = varchar("modelo", 100)
     val precio = double("precio")
-    val stock = integer("perfil")
+    val stock = integer("stock")
     //val id = integer("id").autoIncrement().entityId()
 
 }
@@ -19,8 +19,8 @@ object ProductoTable : IntIdTable("PRODUCTO") {
 //DAO de la entidad Producto
 
 
-class Producto(id: EntityID<Int>): IntEntity(id) {
-    companion object : IntEntityClass<Producto>(ProductoTable)
+class ProductoDao(id: EntityID<Int>): IntEntity(id) {
+    companion object : IntEntityClass<ProductoDao>(ProductoTable)
 
     var uuid by ProductoTable.uuid
     var marca by ProductoTable.marca
