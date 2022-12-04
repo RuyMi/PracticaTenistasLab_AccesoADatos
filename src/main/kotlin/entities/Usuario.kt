@@ -15,7 +15,6 @@ object UsuarioTable : IntIdTable("USUARIO") {
     val perfil = enumeration<TipoPerfil>("perfil")
     val turno= reference("uuidTurno",TurnoTable)
 
-
 }
 
 
@@ -30,7 +29,7 @@ class UsuarioDao(id: EntityID<Int>): IntEntity(id){
     var email by UsuarioTable.email
     var password by UsuarioTable.password
     var perfil by UsuarioTable.perfil
-    val turno by TurnoDao backReferencedOn UsuarioTable.turno
+    var turno by TurnoDao referencedOn  UsuarioTable.turno
 
 
 

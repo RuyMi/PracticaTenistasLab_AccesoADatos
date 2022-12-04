@@ -13,5 +13,5 @@ data class Pedidos(
     val fechaEntrega: LocalDate,
     val precio: Double,
 
-    val tareas: List<Tarea>
+
 )
