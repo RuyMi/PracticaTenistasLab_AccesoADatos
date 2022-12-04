@@ -8,9 +8,12 @@ data class Tarea(
     val producto: Producto,
     val precio: Double,
     val descripcion: String,
+    val empleado: Usuario,
+    val turno:Turno,
+    val estadoCompletado: Boolean,
     val maquinaEncordar: Maquina.MaquinaEncordadora?,
     val maquinaPersonalizacion: Maquina.MaquinaPersonalizacion?,
-    val turno:Turno
+
 ) {
 }
 
