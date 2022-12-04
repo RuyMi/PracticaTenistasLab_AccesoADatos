@@ -5,6 +5,11 @@ import models.enums.TipoPerfil
 import mu.KotlinLogging
 import repository.MaquinaEncordarRepository.MaquinaEncordadoraRepositoryImpl
 import repository.MaquinaPersonalizacionRepository.MaquinaPersonalizacionRepositoryImpl
+import repository.PedidosRepository.PedidosRepositoryImpl
+import repository.ProductosRepository.ProductosRepositoryImpl
+import repository.TareasRepository.TareasRepositoryImpl
+import repository.TurnosRepository.TurnosRepositoryImpl
+import repository.UsuarioRepository.UsuarioRepositoryImpl
 import java.util.UUID
 
 private val logger = KotlinLogging.logger {}
@@ -13,8 +18,8 @@ class Controlador(
     val MaquinaEncordarRepositoryImpl: MaquinaEncordadoraRepositoryImpl,
     val MaquinaPersonalizacionRepositoryImpl: MaquinaPersonalizacionRepositoryImpl,
     val PedidosRepositoryImpl: PedidosRepositoryImpl,
-    val ProductoRepositoryImpl: ProductoRepositoryImpl,
-    val TareaRepositoryImpl: TareaRepositoryImpl,
+    val ProductoRepositoryImpl: ProductosRepositoryImpl,
+    val TareaRepositoryImpl: TareasRepositoryImpl,
     val UsuarioRepositoryImpl: UsuarioRepositoryImpl,
     val TurnosRepositoryImpl: TurnosRepositoryImpl,
     val usuarioActual: Usuario
@@ -91,7 +96,7 @@ class Controlador(
         return PedidosRepositoryImpl.findAll()
     }
 
-    fun encontrarPedidoID(id: Int): Maquina.MaquinaEncordadora? {
+    fun encontrarPedidoID(id: Int): Pedidos? {
         if(id > 0){
             return PedidosRepositoryImpl.findById(id)
         } else{
