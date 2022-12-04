@@ -1,12 +1,14 @@
 package models
 
 import entities.UsuarioDao
+import java.time.LocalDate
+import java.time.LocalDateTime
 import java.util.UUID
 
 data class Turno(
     val id :Int,
-    val uuid:UUID,
-    val tarea:Tarea,
-    val empleado:Usuario,
+    val uuidTurno:UUID,
+    val fechaInicio: LocalDateTime,
+    val fechaFin:LocalDateTime
 ) {
 }
