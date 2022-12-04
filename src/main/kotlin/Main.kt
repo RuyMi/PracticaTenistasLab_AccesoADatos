@@ -11,9 +11,9 @@ import java.util.*
 
 fun main(args: Array<String>) = runBlocking {
     initDataBase()
-    var maquina = MaquinaPersonalizacionDao
-    var repo = MaquinaPersonalizacionRepositoryImpl(maquina)
-    var prueba = Maquina.MaquinaPersonalizacion(
+    val maquina = MaquinaPersonalizacionDao
+    val repo = MaquinaPersonalizacionRepositoryImpl(maquina)
+    val prueba = Maquina.MaquinaPersonalizacion(
         0,
         numSerie = UUID.randomUUID(),
         marca = "Hola",
@@ -22,8 +22,6 @@ fun main(args: Array<String>) = runBlocking {
         swingweight = true,
         balance = 20.0,
         rigidez = 20.0
-
-
     )
     repo.save(prueba)
     val hola = repo.findAll()
