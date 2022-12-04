@@ -17,4 +17,3 @@ data class Tarea(
     val pedido:Pedidos
 ) {
 }
-
