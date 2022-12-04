@@ -41,7 +41,12 @@ class Controlador(
     }
 
     fun borrarMaquinaPerso(maquina: Maquina.MaquinaPersonalizacion): Boolean {
-        return MaquinaPersonalizacionRepositoryImpl.delete(maquina)
+        val temp = listarTareas().filter { !it.estadoCompletado }
+        return if(temp.count{ it.maquinaPersonalizacion?.numSerie == maquina.numSerie} == 0){
+            MaquinaPersonalizacionRepositoryImpl.delete(maquina)
+        }else{
+            false
+        }
     }
 
 
@@ -69,7 +74,12 @@ class Controlador(
     }
 
     fun borrarMaquinaEncordar(maquina: Maquina.MaquinaEncordadora): Boolean {
-        return MaquinaEncordarRepositoryImpl.delete(maquina)
+        val temp = listarTareas().filter { !it.estadoCompletado }
+        return if (temp.count { it.maquinaEncordar?.numSerie == maquina.numSerie } == 0) {
+            MaquinaEncordarRepositoryImpl.delete(maquina)
+        } else {
+            false
+        }
     }
 
     //Pedidos
@@ -146,8 +156,21 @@ class Controlador(
     En caso de que la tarea no este en un turno se podrá añadir ese turno, si no, no podrá añadirse
     a otro turno.
      */
-    fun guardarTarea(tarea: Tarea): Tarea {
-        return TareaRepositoryImpl.save(tarea)
+    fun guardarTarea(tarea: Tarea): Tarea? {
+        val temp = listarTareas()
+        val turnoActual = encontrarTurnoUUID(tarea.turno.uuid)
+        val empleado = encontrarUsuarioUUID(tarea.empleado.uuid)
+        return if (turnoActual != null && empleado != null) {
+            val veces = temp.filter { !it.estadoCompletado }.filter { it.turno.uuid == turnoActual.uuid }.count { it.empleado.uuid == empleado.uuid }
+            if(veces < 2){
+                TareaRepositoryImpl.save(tarea)
+            }else{
+                null
+            }
+        }else{
+            null
+        }
+
     }
 
     fun borrarTarea(tarea: Tarea): Boolean {
