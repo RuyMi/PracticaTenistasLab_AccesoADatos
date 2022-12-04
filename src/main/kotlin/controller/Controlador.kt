@@ -1,20 +1,23 @@
 package controller
 
 import models.*
+import models.enums.TipoPerfil
 import mu.KotlinLogging
+import repository.MaquinaEncordarRepository.MaquinaEncordadoraRepositoryImpl
 import repository.MaquinaPersonalizacionRepository.MaquinaPersonalizacionRepositoryImpl
 import java.util.UUID
 
 private val logger = KotlinLogging.logger {}
 
 class Controlador(
-    val MaquinaEncordarRepositoryImpl: MaquinaEncordarRepositoryImpl,
+    val MaquinaEncordarRepositoryImpl: MaquinaEncordadoraRepositoryImpl,
     val MaquinaPersonalizacionRepositoryImpl: MaquinaPersonalizacionRepositoryImpl,
     val PedidosRepositoryImpl: PedidosRepositoryImpl,
     val ProductoRepositoryImpl: ProductoRepositoryImpl,
     val TareaRepositoryImpl: TareaRepositoryImpl,
     val UsuarioRepositoryImpl: UsuarioRepositoryImpl,
-    val TurnosRepositoryImpl: TurnosRepositoryImpl
+    val TurnosRepositoryImpl: TurnosRepositoryImpl,
+    val usuarioActual: Usuario
 ) {
 
     //Maquina Personalizacion
@@ -71,6 +74,7 @@ class Controlador(
 
     fun guardarMaquinaEncordar(maquina: Maquina.MaquinaEncordadora): Maquina.MaquinaEncordadora {
         return MaquinaEncordarRepositoryImpl.save(maquina)
+
     }
 
     fun borrarMaquinaEncordar(maquina: Maquina.MaquinaEncordadora): Boolean {
@@ -126,11 +130,15 @@ class Controlador(
         return ProductoRepositoryImpl.findbyUUID(uuid)
     }
 
-    fun guardarPedido(producto: Producto): Producto {
-        return ProductoRepositoryImpl.save(producto)
+    fun guardarProducto(producto: Producto): Producto? {
+        return if(usuarioActual.perfil == TipoPerfil.ADMINISTRADOR){
+            ProductoRepositoryImpl.save(producto)
+        }else{
+            null
+        }
     }
 
-    fun borrarPedido(producto: Producto): Boolean {
+    fun borrarProducto(producto: Producto): Boolean {
         return ProductoRepositoryImpl.delete(producto)
     }
 
@@ -158,10 +166,10 @@ class Controlador(
      */
     fun guardarTarea(tarea: Tarea): Tarea? {
         val temp = listarTareas()
-        val turnoActual = encontrarTurnoUUID(tarea.turno.uuid)
+        val turnoActual = encontrarTurnoUUID(tarea.turno.uuidTurno)
         val empleado = encontrarUsuarioUUID(tarea.empleado.uuid)
         return if (turnoActual != null && empleado != null) {
-            val veces = temp.filter { !it.estadoCompletado }.filter { it.turno.uuid == turnoActual.uuid }.count { it.empleado.uuid == empleado.uuid }
+            val veces = temp.filter { !it.estadoCompletado }.filter { it.turno.uuidTurno == turnoActual.uuidTurno }.count { it.empleado.uuid == empleado.uuid }
             if(veces < 2){
                 TareaRepositoryImpl.save(tarea)
             }else{
@@ -200,7 +208,16 @@ class Controlador(
     }
 
     fun borrarUsuario(usuario: Usuario): Boolean {
-        return UsuarioRepositoryImpl.delete(usuario)
+        return if(usuario.perfil == TipoPerfil.ENCORDADOR){
+            val temp = listarTareas().filter { !it.estadoCompletado }.count { it.empleado.uuid == usuario.uuid }
+            if (temp == 0){
+                UsuarioRepositoryImpl.delete(usuario)
+            }else{
+                false
+            }
+        } else{
+            UsuarioRepositoryImpl.delete(usuario)
+        }
     }
 
     //Turnos

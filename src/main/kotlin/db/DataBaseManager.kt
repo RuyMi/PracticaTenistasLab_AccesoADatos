@@ -54,7 +54,7 @@ object DataBaseManager {
         if (appConfig.jdbcshowSQL)
             addLogger(StdOutSqlLogger) // Para que se vea el log de consulas a la base de datos
 
-        SchemaUtils.create( TurnoTable, TareaTable, PedidosTable,  MaquinaPersonalizacionTable)
+        SchemaUtils.create(UsuarioTable, PedidosTable, TurnoTable, TareaTable, PedidosTable,  MaquinaPersonalizacionTable, MaquinaEncordarTable)
         logger.debug("Tables created")
     }
 }
