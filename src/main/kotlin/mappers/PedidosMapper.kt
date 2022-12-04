@@ -14,6 +14,5 @@ fun PedidosDao.fromPedidosDaoToPedidos():Pedidos {
         fechaSalidaProgramada = fechaSalidaProgramada,
         fechaEntrega = fechaEntrega,
         precio = precio,
-        tareas = tareas.map { it.fromTareaDaoToTarea() }
     )
 }

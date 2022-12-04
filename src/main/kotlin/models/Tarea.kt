@@ -14,6 +14,7 @@ data class Tarea(
     val estadoCompletado:Boolean,
     val maquinaEncordar: Maquina.MaquinaEncordadora?,
     val maquinaPersonalizacion: Maquina.MaquinaPersonalizacion?,
+    val pedido:Pedidos
 ) {
 }
 

@@ -10,18 +10,17 @@ import org.jetbrains.exposed.dao.id.IntIdTable
 import org.jetbrains.exposed.sql.javatime.date
 
 object PedidosTable : IntIdTable("PEDIDOS") {
-    val uuid = uuid("uuid").uniqueIndex()
+    val uuid = uuid("uuid_Pedido").uniqueIndex()
     val estado = enumeration<TipoEstado>("estado")
     val fechaEntrada = date("fechaEntrada")
     val fechaSalidaProgramada = date("fechaSalidaProgramada")
     val fechaEntrega = date("fechaEntrega")
     val precio = double("precio")
-    val tareas = reference("uuid_tarea", TareaTable).nullable()
-    //val productos = reference("uuid", ProductoTable)
+    //val tareas = reference("uuid_tarea", TareaTable)
+   // val productos = reference("uuid_producto", ProductoTable)
 
 
     //val id = integer("id").autoIncrement().entityId()
-
 }
 
 
@@ -38,7 +37,9 @@ class PedidosDao(id: EntityID<Int>): IntEntity(id) {
     var fechaEntrega by PedidosTable.fechaEntrega
     var precio by PedidosTable.precio
 
-    val tareas by TareaDao optionalReferrersOn PedidosTable.tareas
+    //var tareas by TareaDao referencedOn TareaTable.uuidTarea
+   // var productos by ProductoDao referencedOn ProductoTable.uuid
+   // meter el pedido en producto
 
 }
 
