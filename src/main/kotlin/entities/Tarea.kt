@@ -1,23 +1,23 @@
 package entities
 
 
-import entities.MaquinaPersonalizacionDao.Companion.backReferencedOn
-import entities.MaquinaPersonalizacionDao.Companion.optionalReferrersOn
+
 import org.jetbrains.exposed.dao.IntEntity
 import org.jetbrains.exposed.dao.IntEntityClass
 import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.dao.id.IntIdTable
-import org.jetbrains.exposed.sql.Table.Dual.references
 
 
 object TareaTable : IntIdTable("TAREA") {
-    val uuidTarea = uuid("uuid").uniqueIndex()
+    val uuidTarea = uuid("uuid_tarea").uniqueIndex()
     val producto = reference("uuid_producto", ProductoTable).nullable()
     val precio = double("precio")
     val descripcion=varchar("Descripcion",150)
+    val empleado=reference("uuid_Usuario",UsuarioTable)
+    val turno = reference("uuid_Turno",TurnoTable)
+    val estadoCompletado=bool("EstadoCompletado")
     val maquinaEncordar = reference("numSerie", MaquinaEncordarTable).nullable()
     val maquinaPersonalizacion = reference("numSerie", MaquinaPersonalizacionTable).nullable()
-    val turno=reference("uuid_turno",TurnoTable)
 
 }
 
@@ -32,13 +32,11 @@ class TareaDao(id: EntityID<Int>): IntEntity(id) {
     val producto by ProductoDao backReferencedOn TareaTable.producto
     var precio by TareaTable.precio
     var descripcion by TareaTable.descripcion
-
+    val empleado by UsuarioDao backReferencedOn TareaTable.empleado
+    val turno by TurnoDao backReferencedOn TareaTable.turno
+    var estadoCompletado by TareaTable.estadoCompletado
     val maquinaEncordar by MaquinaEncordarDao backReferencedOn TareaTable.maquinaEncordar
     val maquinaPersonalizacion by MaquinaPersonalizacionDao backReferencedOn TareaTable.maquinaPersonalizacion
-
-
-
-
 
 }
 

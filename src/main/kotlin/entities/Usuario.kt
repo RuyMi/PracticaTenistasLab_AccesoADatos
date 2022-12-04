@@ -7,13 +7,14 @@ import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.dao.id.IntIdTable
 
 object UsuarioTable : IntIdTable("USUARIO") {
-    val uuid = uuid("uuid").uniqueIndex()
+    val uuid = uuid("uuid_Usuario").uniqueIndex()
     val nombre = varchar("nombre", 100)
     val apellido = varchar("apellido", 100)
     val email = varchar("email", 100)
     val password = varchar("password", 100)
     val perfil = enumeration<TipoPerfil>("perfil")
-    //val id = integer("id").autoIncrement().entityId()
+    val turno= reference("uuidTurno",TurnoTable)
+
 
 }
 
@@ -29,6 +30,7 @@ class UsuarioDao(id: EntityID<Int>): IntEntity(id){
     var email by UsuarioTable.email
     var password by UsuarioTable.password
     var perfil by UsuarioTable.perfil
+    val turno by TurnoDao backReferencedOn UsuarioTable.turno
 
 
 
