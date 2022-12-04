@@ -16,8 +16,8 @@ object TareaTable : IntIdTable("TAREA") {
     val empleado=reference("uuid_Usuario",UsuarioTable)
     val turno = reference("uuid_Turno",TurnoTable)
     val estadoCompletado=bool("EstadoCompletado")
-    val maquinaEncordar = reference("numSerie", MaquinaEncordarTable).nullable()
-    val maquinaPersonalizacion = reference("numSerie", MaquinaPersonalizacionTable).nullable()
+    val maquinaEncordar = reference("numSerieEncordar", MaquinaEncordarTable).nullable()
+    val maquinaPersonalizacion = reference("numSeriePersonalizar", MaquinaPersonalizacionTable).nullable()
     val pedido=reference("uuid_Pedido",PedidosTable)
 
 }

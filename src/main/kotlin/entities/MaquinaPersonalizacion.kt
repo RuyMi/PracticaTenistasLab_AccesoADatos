@@ -16,7 +16,7 @@ import java.util.*
 
 object MaquinaPersonalizacionTable : IntIdTable("MAQUINAPERSO") {
 
-    val numSerie = uuid("numSerie").uniqueIndex()
+    val numSerie = uuid("numSeriePersonalizar").uniqueIndex()
     val marca = varchar("marca", 100)
     val modelo = varchar("modelo", 100)
     val fechaAdquisicion = date("fechaAdquisicion")

@@ -15,8 +15,8 @@ fun TareaDao.fromTareaDaoToTarea(): Tarea {
         empleado=empleado.fromUsuarioDaoToUsuario(),
         turno=turno.fromTurnoDaoToTurno(),
         estadoCompletado=estadoCompletado,
-        maquinaEncordar = maquinaEncordar.fromMaquinaEncordadoraDaoToMaquinaEncordar() ,
-        maquinaPersonalizacion = maquinaPersonalizacion.fromMaquinaPersonalizacionDaoToMaquinaPersonalizacion(),
+        maquinaEncordar = maquinaEncordar?.fromMaquinaEncordadoraDaoToMaquinaEncordar(),
+        maquinaPersonalizacion = maquinaPersonalizacion?.fromMaquinaPersonalizacionDaoToMaquinaPersonalizacion(),
         pedido = pedido.fromPedidosDaoToPedidos()
     )
 }

@@ -8,7 +8,7 @@ package entities
  import org.jetbrains.exposed.sql.javatime.date
 
  object MaquinaEncordarTable : IntIdTable("MAQUINAENCORDAR") {
- val numSerie = uuid("numSerie").uniqueIndex()
+ val numSerie = uuid("numSerieEncordar").uniqueIndex()
  val marca = varchar("marca", 100)
  val modelo = varchar("modelo", 100)
  val fechaAdquisicion = date("fechaAdquisicion")
