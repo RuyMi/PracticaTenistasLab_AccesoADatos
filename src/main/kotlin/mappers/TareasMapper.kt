@@ -12,6 +12,9 @@ fun TareaDao.fromTareaDaoToTarea(): Tarea {
         producto =producto.fromProductoDaoToProducto() ,
         precio = precio,
         descripcion = descripcion,
+        empleado=empleado.fromUsuarioDaoToUsuario(),
+        turno=turno.fromTurnoDaoToTurno(),
+        estadoCompletado=estadoCompletado,
         maquinaEncordar = maquinaEncordar.fromMaquinaEncordadoraDaoToMaquinaEncordar() ,
         maquinaPersonalizacion = maquinaPersonalizacion.fromMaquinaPersonalizacionDaoToMaquinaPersonalizacion()
     )
