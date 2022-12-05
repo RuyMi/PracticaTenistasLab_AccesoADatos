@@ -1,10 +1,13 @@
 package mappers
 
-import entities.MaquinaEncordarDao
 import entities.PedidosDao
-import models.Maquina
 import models.Pedidos
 
+/**
+ * From pedidos dao to pedidos
+ *
+ * @return
+ */
 fun PedidosDao.fromPedidosDaoToPedidos():Pedidos {
     return Pedidos(
         id = id.value,

@@ -14,7 +14,7 @@ object PedidosTable : IntIdTable("PEDIDOS") {
     val estado = enumeration<TipoEstado>("estado")
     val fechaEntrada = date("fechaEntrada")
     val fechaSalidaProgramada = date("fechaSalidaProgramada")
-    val fechaEntrega = date("fechaEntrega")
+    val fechaEntrega = date("fechaEntrega").nullable()
     val precio = double("precio")
     //val tareas = reference("uuid_tarea", TareaTable)
    // val productos = reference("uuid_producto", ProductoTable)
@@ -27,6 +27,13 @@ object PedidosTable : IntIdTable("PEDIDOS") {
 //DAO de la entidad Producto
 
 
+/**
+ * Pedidos dao
+ *
+ * @constructor
+ *
+ * @param id
+ */
 class PedidosDao(id: EntityID<Int>): IntEntity(id) {
     companion object : IntEntityClass<PedidosDao>(PedidosTable)
 

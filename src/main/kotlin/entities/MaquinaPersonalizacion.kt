@@ -24,6 +24,14 @@ object MaquinaPersonalizacionTable : IntIdTable("MAQUINAPERSO") {
     val balance= double("balance")
     val rigidez=double("rigidez")
 }
+
+/**
+ * Maquina personalizacion dao
+ *
+ * @constructor
+ *
+ * @param id
+ */
 class MaquinaPersonalizacionDao(id: EntityID<Int>):  IntEntity(id) {
 
     companion object : IntEntityClass<MaquinaPersonalizacionDao>(MaquinaPersonalizacionTable)

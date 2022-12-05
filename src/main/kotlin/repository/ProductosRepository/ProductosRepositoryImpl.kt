@@ -14,6 +14,12 @@ import java.util.*
 
 private val logger = KotlinLogging.logger {}
 
+/**
+ * Productos repository impl
+ *
+ * @property productoDao
+ * @constructor Create empty Productos repository impl
+ */
 class ProductosRepositoryImpl(
     private val productoDao: IntEntityClass<ProductoDao>
 ):ProductosRepository {
@@ -34,7 +40,12 @@ class ProductosRepositoryImpl(
     }
 
     override fun save(entity: Producto): Producto  = transaction{
-        TODO("Not yet implemented")
+        val existe = productoDao.findById(entity.id)
+        existe?.let {
+            update(entity, existe)
+        } ?: run {
+            insert(entity)
+        }
     }
 
     override fun delete(entity: Producto): Boolean = transaction {

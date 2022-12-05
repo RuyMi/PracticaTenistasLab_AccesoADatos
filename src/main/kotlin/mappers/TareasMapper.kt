@@ -5,6 +5,11 @@ import entities.TareaDao
 import models.Pedidos
 import models.Tarea
 
+/**
+ * From tarea dao to tarea
+ *
+ * @return
+ */
 fun TareaDao.fromTareaDaoToTarea(): Tarea {
     return Tarea(
         id = id.value,

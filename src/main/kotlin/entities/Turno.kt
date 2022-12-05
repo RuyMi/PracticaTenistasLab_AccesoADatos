@@ -19,6 +19,13 @@ object TurnoTable : IntIdTable("TURNOS") {
 //DAO de la entidad Producto
 
 
+/**
+ * Turno dao
+ *
+ * @constructor
+ *
+ * @param id
+ */
 class TurnoDao(id: EntityID<Int>) : IntEntity(id) {
     companion object : IntEntityClass<TurnoDao>(TurnoTable)
     var uuidTurno by TurnoTable.uuidTurno

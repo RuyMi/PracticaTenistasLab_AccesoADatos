@@ -6,9 +6,10 @@ package entities
  import org.jetbrains.exposed.dao.id.IntIdTable
 
  import org.jetbrains.exposed.sql.javatime.date
+ import java.util.*
 
- object MaquinaEncordarTable : IntIdTable("MAQUINAENCORDAR") {
- val numSerie = uuid("numSerieEncordar").uniqueIndex()
+object MaquinaEncordarTable : IntIdTable("MAQUINAENCORDAR") {
+ val numSerie = uuid("numSerieEncordar").uniqueIndex().default(UUID.randomUUID())
  val marca = varchar("marca", 100)
  val modelo = varchar("modelo", 100)
  val fechaAdquisicion = date("fechaAdquisicion")
@@ -23,10 +24,17 @@ package entities
  //DAO de la entidad Producto
 
 
- class MaquinaEncordarDao(id: EntityID<Int>): IntEntity(id) {
+/**
+ * Maquina encordar dao
+ *
+ * @constructor
+ *
+ * @param id
+ */
+class MaquinaEncordarDao(id: EntityID<Int>): IntEntity(id) {
  companion object : IntEntityClass<MaquinaEncordarDao>(MaquinaEncordarTable)
 
-  var numSerie by MaquinaPersonalizacionTable.numSerie
+  var numSerie by MaquinaEncordarTable.numSerie
  var marca by MaquinaEncordarTable.marca
  var modelo by MaquinaEncordarTable.modelo
  var fechaAdquisicion by MaquinaEncordarTable.fechaAdquisicion

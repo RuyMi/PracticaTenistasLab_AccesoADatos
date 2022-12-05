@@ -3,7 +3,17 @@ package services
 import java.security.MessageDigest
 
 
+/**
+ * Password
+ *
+ */
 class Password {
+    /**
+     * Sha256
+     *
+     * @param cadena
+     * @return
+     */
     fun SHA256(cadena: String): String {
         var md: MessageDigest? = null
         var hash: ByteArray? = null

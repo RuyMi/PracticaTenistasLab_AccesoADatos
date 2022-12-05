@@ -14,6 +14,12 @@ import java.util.*
 
 private val logger = KotlinLogging.logger {}
 
+/**
+ * Usuario repository impl
+ *
+ * @property usuarioDao
+ * @constructor Create empty Usuario repository impl
+ */
 class UsuarioRepositoryImpl(
     private val usuarioDao: IntEntityClass<UsuarioDao>
     ) : UsuarioRepository {
@@ -60,7 +66,7 @@ class UsuarioRepositoryImpl(
             email=entity.email
             password=entity.password
             perfil=entity.perfil
-            turno= TurnoDao.findById(entity.turno.id)!!
+            turno= entity.turno?.let { TurnoDao.findById(it.id) }
         }.fromUsuarioDaoToUsuario()
     }
 
@@ -74,7 +80,7 @@ class UsuarioRepositoryImpl(
             email=entity.email
             password=entity.password
             perfil=entity.perfil
-            turno= TurnoDao.findById(entity.turno.id)!!
+            turno= entity.turno?.let { TurnoDao.findById(it.id) }
         }.fromUsuarioDaoToUsuario()
     }
 

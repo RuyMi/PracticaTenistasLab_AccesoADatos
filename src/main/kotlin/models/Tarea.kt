@@ -3,6 +3,22 @@ package models
 import java.util.*
 
 
+/**
+ * Tarea
+ *
+ * @property id
+ * @property uuidTarea
+ * @property producto
+ * @property precio
+ * @property descripcion
+ * @property empleado
+ * @property turno
+ * @property estadoCompletado
+ * @property maquinaEncordar
+ * @property maquinaPersonalizacion
+ * @property pedido
+ * @constructor Create empty Tarea
+ */
 data class Tarea(
     val id: Int,
     val uuidTarea: UUID,
