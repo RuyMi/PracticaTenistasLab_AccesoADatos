@@ -1,6 +1,6 @@
 import config.AppConfig
 import controller.Controlador
-import db.DataBaseManager
+import db.*
 import entities.*
 import kotlinx.coroutines.runBlocking
 import models.Maquina
@@ -20,6 +20,11 @@ import java.time.LocalDateTime
 import java.util.*
 
 
+/**
+ * Main
+ *
+ * @param args
+ */
 fun main(args: Array<String>) = runBlocking {
     initDataBase()
     val controlador = Controlador(
@@ -36,7 +41,7 @@ fun main(args: Array<String>) = runBlocking {
             "García",
             "fewi",
             Password().SHA256("prueba"),
-            TipoPerfil.ENCORDADOR,
+            TipoPerfil.ADMINISTRADOR,
             Turno(
                 1,
                 UUID.randomUUID(),
@@ -44,45 +49,33 @@ fun main(args: Array<String>) = runBlocking {
                 LocalDateTime.now()
             ))
     )
-    val maquina = MaquinaPersonalizacionDao
-    val repo = MaquinaPersonalizacionRepositoryImpl(maquina)
-    val prueba = Maquina.MaquinaPersonalizacion(
-        0,
-        numSerie = UUID.randomUUID(),
-        marca = "Hola",
-        modelo = "hola",
-        fechaAdquisicion = LocalDate.now(),
-        swingweight = true,
-        balance = 20.0,
-        rigidez = 20.0
-    )
-    val usuario = Usuario(
-        1,
-        UUID.randomUUID(),
-        "Ruben",
-        "García",
-        "fewi",
-        Password().SHA256("prueba"),
-        TipoPerfil.ENCORDADOR,
-        Turno(
-        1,
-            UUID.randomUUID(),
-            LocalDateTime.now(),
-            LocalDateTime.now()
-        )
-    )
-    controlador.guardarTurno(  Turno(
-        1,
-        UUID.randomUUID(),
-        LocalDateTime.now(),
-        LocalDateTime.now()
-    ))
-    controlador.guardarUsuario(usuario)
+    getTurnos().forEach { controlador.guardarTurno(it) }
+    val listaTurnos = controlador.listarTurnos()
+    listaTurnos.forEach{ println(it)}
 
-    val usuariorepo = controlador.listarUsuarios()
-    println(usuariorepo)
+    getUsuarios().forEach { controlador.guardarUsuario(it!!) }
+    val listaUsuarios = controlador.listarUsuarios()
+    listaUsuarios.forEach{ println(it)}
+
+    getMaquinasEncordar().forEach{ controlador.guardarMaquinaEncordar(it)}
+    val listaMaquinas = controlador.listarMaquinasEncordar()
+    listaMaquinas.forEach{ println(it)}
+
+    getMaquinasPersonalizacion().forEach { controlador.guardarMaquinaPerso(it)}
+    val listaMaquinasPerso = controlador.listarMaquinasPerso()
+    listaMaquinasPerso.forEach{ println(it)}
+
+    getProductos().forEach { controlador.guardarProducto(it)}
+    val listaProductos = controlador.listarProductos()
+    listaProductos.forEach{ println(it)}
+
+
 }
 
+/**
+ * Init data base
+ *
+ */
 fun initDataBase() {
     val appConfig = AppConfig.fromPropertiesFile("src/main/resources/config.properties")
     println("Configuración: $appConfig")

@@ -2,12 +2,50 @@ package repository
 
 import java.util.*
 
-// Vamos a simular
-// https://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/repository/CrudRepository.html
+/**
+ * Crud repository
+ *
+ * @param T
+ * @param ID
+ */
+
 interface CrudRepository<T, ID> {
+    /**
+     * Find all
+     *
+     * @return
+     */
     fun findAll(): List<T> // List<T> es una lista de T
-    fun findById(id: ID): T? // nullable puede no existir
+
+    /**
+     * Find by id
+     *
+     * @param id
+     * @return
+     */
+    fun findById(id: ID): T?
+
+    /**
+     * Findby u u i d
+     *
+     * @param uuid
+     * @return
+     */
     fun findbyUUID(uuid: UUID): T?
-    fun save(entity: T): T // Inserta si no existe, actualiza si existe
-    fun delete(entity: T): Boolean // No es obligatorio el boolean
+
+    /**
+     * Save
+     *
+     * @param entity
+     * @return
+     */
+    fun save(entity: T): T
+
+    /**
+     * Delete
+     *
+     * @param entity
+     * @return
+     */
+    fun delete(entity: T): Boolean
 }

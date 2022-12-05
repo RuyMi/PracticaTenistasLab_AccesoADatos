@@ -12,6 +12,12 @@ import java.util.*
 
 private val logger = KotlinLogging.logger {}
 
+/**
+ * Maquina personalizacion repository impl
+ *
+ * @property maquinaPerDao
+ * @constructor Create empty Maquina personalizacion repository impl
+ */
 class MaquinaPersonalizacionRepositoryImpl(private val maquinaPerDao: IntEntityClass<MaquinaPersonalizacionDao>) :
     MaquinaPersonalizacionRepository {
 

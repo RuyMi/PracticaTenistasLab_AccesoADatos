@@ -5,6 +5,11 @@ import entities.TareaDao
 import models.Producto
 import models.Tarea
 
+/**
+ * From producto dao to producto
+ *
+ * @return
+ */
 fun ProductoDao.fromProductoDaoToProducto(): Producto {
     return Producto(
         id = id.value,

@@ -13,7 +13,7 @@ object UsuarioTable : IntIdTable("USUARIO") {
     val email = varchar("email", 100)
     val password = varchar("password", 100)
     val perfil = enumeration<TipoPerfil>("perfil")
-    val turno= reference("uuidTurno",TurnoTable)
+    val turno= reference("uuidTurno",TurnoTable).nullable()
 
 }
 
@@ -21,6 +21,13 @@ object UsuarioTable : IntIdTable("USUARIO") {
     //DAO de la entidad Usuario
 
 
+/**
+ * Usuario dao
+ *
+ * @constructor
+ *
+ * @param id
+ */
 class UsuarioDao(id: EntityID<Int>): IntEntity(id){
     companion object : IntEntityClass<UsuarioDao>(UsuarioTable)
     var uuid by UsuarioTable.uuid
@@ -29,7 +36,7 @@ class UsuarioDao(id: EntityID<Int>): IntEntity(id){
     var email by UsuarioTable.email
     var password by UsuarioTable.password
     var perfil by UsuarioTable.perfil
-    var turno by TurnoDao referencedOn  UsuarioTable.turno
+    var turno by TurnoDao optionalReferencedOn  UsuarioTable.turno
 
 
 

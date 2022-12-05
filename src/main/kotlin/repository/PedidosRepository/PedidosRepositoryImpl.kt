@@ -17,6 +17,13 @@ import kotlin.jvm.Throws
 
 private val logger = KotlinLogging.logger {}
 
+/**
+ * Pedidos repository impl
+ *
+ * @property pedidoDao
+ * @property tareasDao
+ * @constructor Create empty Pedidos repository impl
+ */
 class PedidosRepositoryImpl(
     private val pedidoDao: IntEntityClass<PedidosDao>,
     private val tareasDao: IntEntityClass<TareaDao>

@@ -1,11 +1,16 @@
 package mappers
 
-import entities.TurnoDao
+
 import entities.UsuarioDao
-import models.Turno
+
 import models.Usuario
 
 
+/**
+ * From usuario dao to usuario
+ *
+ * @return
+ */
 fun UsuarioDao.fromUsuarioDaoToUsuario(): Usuario {
     return Usuario(
         id = id.value,
@@ -15,6 +20,6 @@ fun UsuarioDao.fromUsuarioDaoToUsuario(): Usuario {
         email=email,
         password=password,
         perfil=perfil,
-        turno = turno.fromTurnoDaoToTurno()
+        turno = turno?.fromTurnoDaoToTurno()
     )
 }

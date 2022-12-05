@@ -14,6 +14,12 @@ import java.util.*
 
 private val logger = KotlinLogging.logger {}
 
+/**
+ * Tareas repository impl
+ *
+ * @property tareasDao
+ * @constructor Create empty Tareas repository impl
+ */
 class TareasRepositoryImpl(
     private val tareasDao: IntEntityClass<TareaDao>
 ) : TareasRepository {

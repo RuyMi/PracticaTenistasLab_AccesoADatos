@@ -15,6 +15,12 @@ import java.util.*
 
 private val logger = KotlinLogging.logger {}
 
+/**
+ * Maquina encordadora repository impl
+ *
+ * @property maquinaEncordaDao
+ * @constructor Create empty Maquina encordadora repository impl
+ */
 class MaquinaEncordadoraRepositoryImpl(private val maquinaEncordaDao: IntEntityClass<MaquinaEncordarDao>) :
     MaquinaEncordarRepository {
 

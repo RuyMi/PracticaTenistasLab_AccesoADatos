@@ -15,6 +15,12 @@ import java.util.*
 private val logger = KotlinLogging.logger {}
 
 
+/**
+ * Turnos repository impl
+ *
+ * @property turnoDao
+ * @constructor Create empty Turnos repository impl
+ */
 class TurnosRepositoryImpl(private val turnoDao: IntEntityClass<TurnoDao>):TurnosRepository {
 
     override fun findAll(): List<Turno> = transaction {

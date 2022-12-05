@@ -26,6 +26,13 @@ object TareaTable : IntIdTable("TAREA") {
 //DAO de la entidad Producto
 
 
+/**
+ * Tarea dao
+ *
+ * @constructor
+ *
+ * @param id
+ */
 class TareaDao(id: EntityID<Int>): IntEntity(id) {
     companion object : IntEntityClass<TareaDao>(TareaTable)
 
