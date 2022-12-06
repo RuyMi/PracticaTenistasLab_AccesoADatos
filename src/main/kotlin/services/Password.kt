@@ -1,6 +1,7 @@
 package services
 
-import java.security.MessageDigest
+import com.google.common.hash.Hashing
+import java.nio.charset.StandardCharsets
 
 
 /**
@@ -8,24 +9,11 @@ import java.security.MessageDigest
  *
  */
 class Password {
-    /**
-     * Sha256
-     *
-     * @param cadena
-     * @return
-     */
-    fun SHA256(cadena: String): String {
-        var md: MessageDigest? = null
-        var hash: ByteArray? = null
-        // Llamamos a la función de hash de java
-        try {
-            md = MessageDigest.getInstance("SHA-256")
-            hash = md.digest(cadena.toByteArray(charset("UTF-8")))
-        } catch (ex: Exception) {
-            ex.printStackTrace()
-        }
-        return hash.toString()
+
+
+    fun encriptar(originalString: String): String {
+        return Hashing.sha256()
+            .hashString(originalString, StandardCharsets.UTF_8)
+            .toString()
     }
-
-
 }

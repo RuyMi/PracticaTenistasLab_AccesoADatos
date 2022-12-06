@@ -1,10 +1,14 @@
 package db
 
-import entities.TurnoDao
+import entities.*
 import models.*
 import models.enums.TipoEstado
 import models.enums.TipoPerfil
+import repository.MaquinaEncordarRepository.MaquinaEncordadoraRepositoryImpl
+import repository.PedidosRepository.PedidosRepositoryImpl
+import repository.ProductosRepository.ProductosRepositoryImpl
 import repository.TurnosRepository.TurnosRepositoryImpl
+import repository.UsuarioRepository.UsuarioRepositoryImpl
 import services.Password
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -48,7 +52,7 @@ return listOf(
             "Mario",
             "Sánchez",
             "mario.sanchez@gmail.com",
-            Password().SHA256("marioSanchez"),
+            Password().encriptar("marioSanchez"),
             TipoPerfil.ENCORDADOR,
             it
         )
@@ -59,7 +63,7 @@ return listOf(
         "Andrés",
         "Márquez",
         "andres.marquez@gmail.com",
-        Password().SHA256("andresMarquez"),
+        Password().encriptar("andresMarquez"),
         TipoPerfil.USUARIO,
         null
     ),
@@ -70,7 +74,7 @@ return listOf(
             "Rubén",
             "García-Redondo",
             "rubengrm@gmail.com",
-            Password().SHA256("rubengrm"),
+            Password().encriptar("rubengrm"),
             TipoPerfil.ENCORDADOR,
             it
         )
@@ -82,7 +86,7 @@ return listOf(
             "Álvaro",
             "Yubero",
             "alvaro.yubero@gmail.com",
-            Password().SHA256("alvaroYubero"),
+            Password().encriptar("alvaroYubero"),
             TipoPerfil.ENCORDADOR,
             it
         )
@@ -246,6 +250,24 @@ fun getProductos(): List<Producto>{
             "grips",
             20.2,
             12
+        )
+    )
+}
+
+fun getTareas(): List<Tarea>{
+    return listOf(
+        Tarea(
+          0,
+            UUID.randomUUID(),
+            ProductosRepositoryImpl(ProductoDao).findById(1)!!,
+            20.0,
+            "Personalizacion",
+            UsuarioRepositoryImpl(UsuarioDao).findById(3)!!,
+            TurnosRepositoryImpl(TurnoDao).findById(1)!!,
+            true,
+            MaquinaEncordadoraRepositoryImpl(MaquinaEncordarDao).findById(1)!!,
+            null,
+            PedidosRepositoryImpl(PedidosDao, TareaDao).findById(1)!!
         )
     )
 }

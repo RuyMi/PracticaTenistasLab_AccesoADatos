@@ -31,6 +31,8 @@ dependencies {
     // Para manejar un pool de conexions mega rápido con HikariCP
     implementation("com.zaxxer:HikariCP:5.0.1")
 
+    implementation("com.google.guava:guava:31.1-jre")
+
 }
 
 tasks.test {
