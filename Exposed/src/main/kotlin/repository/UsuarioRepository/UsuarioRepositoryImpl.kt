@@ -1,6 +1,7 @@
 package repository.UsuarioRepository
 
 import entities.*
+import exceptions.TurnoException
 import mappers.fromPedidosDaoToPedidos
 import mappers.fromUsuarioDaoToUsuario
 import models.Pedidos

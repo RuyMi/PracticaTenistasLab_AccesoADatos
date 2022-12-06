@@ -1,6 +1,7 @@
 package repository.TareasRepository
 
 import entities.*
+import exceptions.*
 import mappers.fromPedidosDaoToPedidos
 import mappers.fromTareaDaoToTarea
 import models.Pedidos
@@ -62,15 +63,15 @@ class TareasRepositoryImpl(
         logger.debug { "save($entity) - creando" }
         return tareasDao.new() {
             uuidTarea = entity.uuidTarea
-            producto = ProductoDao.findById(entity.producto.id)!!
+            producto = ProductoDao.findById(entity.producto.id)?: throw ProductoException("El producto no existe con id: ${entity.turno.id}")
             precio = entity.precio
             descripcion = entity.descripcion
-            empleado = UsuarioDao.findById(entity.empleado.id)!!
-            turno = TurnoDao.findById(entity.turno.id)!!
+            empleado = UsuarioDao.findById(entity.empleado.id)?: throw UsuarioException("El empleado no existe con id: ${entity.turno.id}")
+            turno = TurnoDao.findById(entity.turno.id)?: throw TurnoException("El turno no existe con id: ${entity.turno.id}")
             estadoCompletado = entity.estadoCompletado
             maquinaEncordar = entity.maquinaEncordar?.let { MaquinaEncordarDao.findById(it.id) }
             maquinaPersonalizacion = entity.maquinaPersonalizacion?.let { MaquinaPersonalizacionDao.findById(it.id) }
-            pedido = PedidosDao.findById(entity.pedido.id)!!
+            pedido = PedidosDao.findById(entity.pedido.id)?: throw PedidoException("El pedido no existe con id: ${entity.pedido.id}")
         }.fromTareaDaoToTarea()
     }
 
@@ -79,15 +80,15 @@ class TareasRepositoryImpl(
         // Si existe actualizamos
         return existe.apply {
             uuidTarea = entity.uuidTarea
-            producto = ProductoDao.findById(entity.producto.id)!!
+            producto = ProductoDao.findById(entity.producto.id)?: throw ProductoException("El producto no existe con id: ${entity.turno.id}")
             precio = entity.precio
             descripcion = entity.descripcion
-            empleado = UsuarioDao.findById(entity.empleado.id)!!
-            turno = TurnoDao.findById(entity.turno.id)!!
+            empleado = UsuarioDao.findById(entity.empleado.id)?: throw UsuarioException("El empleado no existe con id: ${entity.turno.id}")
+            turno = TurnoDao.findById(entity.turno.id)?: throw TurnoException("El turno no existe con id: ${entity.turno.id}")
             estadoCompletado = entity.estadoCompletado
             maquinaEncordar = entity.maquinaEncordar?.let { MaquinaEncordarDao.findById(it.id) }
             maquinaPersonalizacion = entity.maquinaPersonalizacion?.let { MaquinaPersonalizacionDao.findById(it.id) }
-            pedido = PedidosDao.findById(entity.pedido.id)!!
+            pedido = PedidosDao.findById(entity.pedido.id)?: throw PedidoException("El pedido no existe con id: ${entity.pedido.id}")
         }.fromTareaDaoToTarea()
     }
 

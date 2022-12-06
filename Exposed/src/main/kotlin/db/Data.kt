@@ -5,6 +5,7 @@ import models.*
 import models.enums.TipoEstado
 import models.enums.TipoPerfil
 import repository.MaquinaEncordarRepository.MaquinaEncordadoraRepositoryImpl
+import repository.MaquinaPersonalizacionRepository.MaquinaPersonalizacionRepositoryImpl
 import repository.PedidosRepository.PedidosRepositoryImpl
 import repository.ProductosRepository.ProductosRepositoryImpl
 import repository.TurnosRepository.TurnosRepositoryImpl
@@ -268,6 +269,45 @@ fun getTareas(): List<Tarea>{
             MaquinaEncordadoraRepositoryImpl(MaquinaEncordarDao).findById(1)!!,
             null,
             PedidosRepositoryImpl(PedidosDao, TareaDao).findById(1)!!
+        ),
+        Tarea(
+            0,
+            UUID.randomUUID(),
+            ProductosRepositoryImpl(ProductoDao).findById(3)!!,
+            20.0,
+            "Personalizacion",
+            UsuarioRepositoryImpl(UsuarioDao).findById(2)!!,
+            TurnosRepositoryImpl(TurnoDao).findById(3)!!,
+            true,
+            MaquinaEncordadoraRepositoryImpl(MaquinaEncordarDao).findById(2)!!,
+            null,
+            PedidosRepositoryImpl(PedidosDao, TareaDao).findById(3)!!
+        ),
+        Tarea(
+            0,
+            UUID.randomUUID(),
+            ProductosRepositoryImpl(ProductoDao).findById(2)!!,
+            20.0,
+            "Personalizacion",
+            UsuarioRepositoryImpl(UsuarioDao).findById(2)!!,
+            TurnosRepositoryImpl(TurnoDao).findById(2)!!,
+            true,
+            MaquinaEncordadoraRepositoryImpl(MaquinaEncordarDao).findById(3)!!,
+            null,
+            PedidosRepositoryImpl(PedidosDao, TareaDao).findById(3)!!
+        ),
+        Tarea(
+            0,
+            UUID.randomUUID(),
+            ProductosRepositoryImpl(ProductoDao).findById(1)!!,
+            20.0,
+            "Personalizacion",
+            UsuarioRepositoryImpl(UsuarioDao).findById(3)!!,
+            TurnosRepositoryImpl(TurnoDao).findById(3)!!,
+            true,
+            null,
+            MaquinaPersonalizacionRepositoryImpl(MaquinaPersonalizacionDao).findById(1)!!,
+            PedidosRepositoryImpl(PedidosDao, TareaDao).findById(3)!!
         )
     )
 }

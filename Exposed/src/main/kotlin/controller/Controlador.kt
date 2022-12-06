@@ -56,12 +56,12 @@ class Controlador(
      * @return
      */
     fun encontrarMaquinaPersoID(id: Int): Maquina.MaquinaPersonalizacion? {
-        if(id > 0){
-            return MaquinaPersonalizacionRepositoryImpl.findById(id)
+        return if(id > 0){
+            MaquinaPersonalizacionRepositoryImpl.findById(id)
         } else{
             logger.debug{"No puedes encontrar una máquina que tenga un id menor que 1. Id introducido: $id"}
+            null
         }
-        return null
     }
 
     /**
@@ -326,9 +326,11 @@ class Controlador(
             if(veces < 2){
                 TareaRepositoryImpl.save(tarea)
             }else{
+                logger.debug { "No puede tener 2 tareas en el mismo turno a la vez el empleado con uuid: ${empleado.uuid}"}
                 null
             }
         }else{
+            logger.debug { "No existe el empleado: ${empleado!!.uuid}"}
             null
         }
 
@@ -417,7 +419,7 @@ class Controlador(
     }
 
     /**
-     * Encontrar turno i d
+     * Encontrar turno id
      *
      * @param id
      * @return
@@ -432,7 +434,7 @@ class Controlador(
     }
 
     /**
-     * Encontrar turno u u i d
+     * Encontrar turno uuid
      *
      * @param uuid
      * @return
