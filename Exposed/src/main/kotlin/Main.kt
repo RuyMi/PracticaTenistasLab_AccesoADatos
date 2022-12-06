@@ -20,7 +20,10 @@ import services.Password
 import java.util.*
 import kotlin.system.exitProcess
 
-private val json = Json{prettyPrint = true}
+private val json = Json{
+    prettyPrint = true
+    allowStructuredMapKeys = true
+}
 /**
  * Main
  *
@@ -70,6 +73,14 @@ fun main(args: Array<String>) = runBlocking {
         | -> Personalizacion
         | -> Encordar
     """.trimMargin())
+
+    //Listado de asignaciones para los encordadores por fecha en JSON
+    //* Hemos entendido que debemos sacar por cada empleado, sus tareas realizadas ordenadas por hora
+
+    val tareasByEmpleadoSortFecha = controlador.listarTareas().sortedBy { it.turno.fechaFin }.groupBy { it.empleado }
+    val tareasByEmpleadoSortFechajson =  json.encodeToString(tareasByEmpleadoSortFecha)
+    println("""Listado de las tareas agrupadas por empleado y ordenadas por fecha: $tareasByEmpleadoSortFechajson""")
+
 
     //mostrarMenuPrincipal(usuarioActual)
 
