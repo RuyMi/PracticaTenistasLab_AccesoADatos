@@ -4,7 +4,10 @@ import db.*
 import entities.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import models.Usuario
+import models.enums.TipoEstado
 import models.enums.TipoPerfil
 import repository.MaquinaEncordarRepository.MaquinaEncordadoraRepositoryImpl
 import repository.MaquinaPersonalizacionRepository.MaquinaPersonalizacionRepositoryImpl
@@ -17,7 +20,7 @@ import services.Password
 import java.util.*
 import kotlin.system.exitProcess
 
-
+private val json = Json{prettyPrint = true}
 /**
  * Main
  *
@@ -36,8 +39,40 @@ fun main(args: Array<String>) = runBlocking {
         TurnosRepositoryImpl(TurnoDao),
         usuarioActual
     )
-    mostrarMenuPrincipal(usuarioActual)
     meterDatos(controlador)
+    // Lista de un pedido completo en json
+    val pedido = controlador.encontrarPedidoID(1)
+    val tareas = controlador.listarTareas().filter { it.pedido.uuid == pedido!!.uuid }
+    val tarea1 = json.encodeToString(pedido)
+    val tarea2 = json.encodeToString(tareas)
+    println("""Pedido: $tarea1
+        Las tareas de este producto eran: $tarea2
+    """.trimMargin())
+
+    //Listado de pedidos pendientes en JSON
+    val pedidosPen = controlador.listarPedidos().filter { it.estado == TipoEstado.EN_PROCESO }
+    val pedidosPenjson = json.encodeToString(pedidosPen)
+    println("Listado de pedidos pendientes: $pedidosPenjson")
+
+    //Listado de pedidos completados en JSON
+    val pedidosCom = controlador.listarPedidos().filter { it.estado != TipoEstado.EN_PROCESO }
+    val pedidosComjson = json.encodeToString(pedidosCom)
+    println("Listado de pedidos completados: $pedidosComjson")
+
+    //Listado de productos y servicios en JSON
+    val productos = controlador.listarProductos()
+    val productosjson = json.encodeToString(productos)
+    println("""Productos disponibles: 
+        |$productosjson
+        |
+        |Servicios que ofrecemos:
+        | -> Adquisición
+        | -> Personalizacion
+        | -> Encordar
+    """.trimMargin())
+
+    //mostrarMenuPrincipal(usuarioActual)
+
 
 
 }
@@ -158,7 +193,7 @@ fun initDataBase() {
         "Administrador",
         "Prueba",
         "admin@admin.com",
-        Password().encriptar(readln()),
+        Password().encriptar("1234"),
         TipoPerfil.ADMINISTRADOR,
         null
     )

@@ -192,7 +192,7 @@ fun getPedidos(): List<Pedidos>{
             TipoEstado.EN_PROCESO,
             LocalDate.now(),
             LocalDate.of(2022, 12, 6),
-            LocalDate.of(2022, 12, 7),
+            null,
             120.5
         ),
         Pedidos(

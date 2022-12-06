@@ -1,6 +1,11 @@
 package models
 
+import kotlinx.serialization.Contextual
+import kotlinx.serialization.Serializable
 import org.jetbrains.exposed.dao.id.EntityID
+import serializers.LocalDateSerializer
+import serializers.LocalDateTimeSerializer
+import serializers.UUIDSerializer
 import java.time.LocalDate
 import java.util.*
 
@@ -8,6 +13,7 @@ import java.util.*
  * Maquina
  *
  */
+@Serializable
 sealed class Maquina() {
 
     /**
@@ -23,11 +29,14 @@ sealed class Maquina() {
      * @property rigidez
      * @constructor Create empty Maquina personalizacion
      */
+    @Serializable
     data class MaquinaPersonalizacion(
         val id: Int,
+        @Serializable(UUIDSerializer::class)
         val numSerie: UUID=UUID.randomUUID(),
         val marca: String,
         val modelo: String,
+        @Serializable(LocalDateSerializer::class)
         val fechaAdquisicion: LocalDate,
         val swingweight: Boolean,
         val balance: Double,
@@ -48,11 +57,14 @@ sealed class Maquina() {
      * @property tensionMinima
      * @constructor Create empty Maquina encordadora
      */
+    @Serializable
     data class MaquinaEncordadora(
         val id: Int,
+        @Serializable(UUIDSerializer::class)
         val numSerie: UUID = UUID.randomUUID(),
         val marca: String,
         val modelo: String,
+        @Serializable(LocalDateSerializer::class)
         val fechaAdquisicion: LocalDate,
         val automatico: Boolean,
         val tensionMaxima: Double,

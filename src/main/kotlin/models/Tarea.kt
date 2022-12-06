@@ -1,5 +1,7 @@
 package models
 
+import kotlinx.serialization.Serializable
+import serializers.UUIDSerializer
 import java.util.*
 
 
@@ -19,8 +21,10 @@ import java.util.*
  * @property pedido
  * @constructor Create empty Tarea
  */
+@Serializable
 data class Tarea(
     val id: Int,
+    @Serializable(UUIDSerializer::class)
     val uuidTarea: UUID,
     val producto: Producto,
     val precio: Double,
@@ -32,4 +36,7 @@ data class Tarea(
     val maquinaPersonalizacion: Maquina.MaquinaPersonalizacion?,
     val pedido:Pedidos
 ) {
+    override fun toString(): String {
+        return "Tarea(id=$id, uuidTarea=$uuidTarea, producto=$producto, precio=$precio, descripcion='$descripcion', empleado=${empleado.nombre}, ${empleado.apellido} turno=$turno, estadoCompletado=$estadoCompletado, maquinaEncordar=$maquinaEncordar, maquinaPersonalizacion=$maquinaPersonalizacion, pedido=$pedido)"
+    }
 }

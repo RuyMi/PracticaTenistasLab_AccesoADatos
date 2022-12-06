@@ -1,6 +1,8 @@
 package models
 
+import kotlinx.serialization.Serializable
 import models.enums.TipoPerfil
+import serializers.UUIDSerializer
 import java.util.UUID
 
 /**
@@ -16,8 +18,10 @@ import java.util.UUID
  * @property turno
  * @constructor Create empty Usuario
  */
+@Serializable
 data class Usuario(
     val id:Int,
+    @Serializable(UUIDSerializer::class)
     val uuid: UUID,
     val nombre: String,
     val apellido: String,
@@ -27,4 +31,7 @@ data class Usuario(
     val turno:Turno?,
 ) {
 
+    override fun toString(): String {
+        return "Usuario(id=$id, uuid=$uuid, nombre='$nombre', apellido='$apellido', perfil=$perfil, turno=$turno)"
+    }
 }
