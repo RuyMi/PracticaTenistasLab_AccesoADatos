@@ -181,38 +181,7 @@ class ControladorTest {
     fun getUsuarioActual() {
     }
 
-    companion object{
-        @JvmStatic
-        @BeforeAll
-        fun setUp(): Unit {
-            getTurnos().forEach { controlador.guardarTurno(it) }
-            val listaTurnos = controlador.listarTurnos()
-            listaTurnos.forEach { println(it) }
 
-            getUsuarios().forEach { controlador.guardarUsuario(it!!) }
-            val listaUsuarios = controlador.listarUsuarios()
-            listaUsuarios.forEach { println(it) }
 
-            getMaquinasEncordar().forEach { controlador.guardarMaquinaEncordar(it) }
-            val listaMaquinas = controlador.listarMaquinasEncordar()
-            listaMaquinas.forEach { println(it) }
 
-            getMaquinasPersonalizacion().forEach { controlador.guardarMaquinaPerso(it) }
-            val listaMaquinasPerso = controlador.listarMaquinasPerso()
-            listaMaquinasPerso.forEach { println(it) }
-
-            getProductos().forEach { controlador.guardarProducto(it) }
-            val listaProductos = controlador.listarProductos()
-            listaProductos.forEach { println(it) }
-
-            getPedidos().forEach { controlador.guardarPedido(it) }
-            val listaPedidos = controlador.listarPedidos()
-            listaPedidos.forEach { println(it) }
-
-            getTareas().forEach { controlador.guardarTarea(it) }
-            val listaTareas = controlador.listarTareas()
-            listaTareas.forEach { println(it) }
-        }
-
-    }
 }

@@ -2,7 +2,6 @@ package repositories.PedidosRepository
 
 import HibernateManager.manager
 import models.Pedidos
-import models.Usuario
 import mu.KotlinLogging
 import repository.PedidosRepository.PedidosRepository
 import java.util.*
@@ -17,6 +16,7 @@ class PedidosRepositoryImpl:PedidosRepository {
         var pedidos = mutableListOf<Pedidos>()
         HibernateManager.query {
             val query: TypedQuery<Pedidos> = manager.createNamedQuery("Pedidos.findAll", Pedidos::class.java)
+
             pedidos = query.resultList
         }
         return pedidos
@@ -36,6 +36,7 @@ class PedidosRepositoryImpl:PedidosRepository {
         var pedido: Pedidos? = null
         HibernateManager.query {
             val query: TypedQuery<Pedidos> = manager.createNamedQuery("Pedidos.porUUID", Pedidos::class.java)
+            query.setParameter("id", uuid)
             pedido=query.singleResult
         }
         return pedido

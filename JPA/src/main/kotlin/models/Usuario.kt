@@ -28,11 +28,11 @@ import javax.persistence.*
     NamedQuery(name = "Usuarios.findAll", query = "SELECT t FROM Usuario t"),
     NamedQuery(
         name = "Usuario.porUUID",
-        query = "SELECT t FROM Usuario t WHERE t.uuid = t"
-    ),
+        query = "SELECT t FROM Usuario t WHERE t.uuid = :uuid"
+    )
 )
 data class Usuario(
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id:Int,
     @Serializable(UUIDSerializer::class)
     @Column(name="UUID_Usuario")
@@ -45,9 +45,13 @@ data class Usuario(
     val perfil: TipoPerfil,
     @OneToOne
     val turno:Turno?,
-) {
+) : java.io.Serializable {
 
     override fun toString(): String {
         return "Usuario(id=$id, uuid=$uuid, nombre='$nombre', apellido='$apellido', perfil=$perfil, turno=$turno)"
+    }
+
+    companion object {
+        private const val serialVersionUID = -4285608151061758893L
     }
 }

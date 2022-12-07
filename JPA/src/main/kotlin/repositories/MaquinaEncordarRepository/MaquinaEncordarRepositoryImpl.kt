@@ -1,7 +1,7 @@
 package repositories.MaquinaEncordarRepository
 
 import HibernateManager.manager
-import models.Maquina
+import models.MaquinaEncordadora
 import mu.KotlinLogging
 
 import repository.MaquinaEncordarRepository.MaquinaEncordarRepository
@@ -13,36 +13,37 @@ private val logger = KotlinLogging.logger {}
 
 class MaquinaEncordarRepositoryImpl :MaquinaEncordarRepository{
 
-    override fun findAll(): List<Maquina.MaquinaEncordadora> {
+    override fun findAll(): List<MaquinaEncordadora> {
         logger.debug { "findAll()" }
-        var maquinasPerso = mutableListOf<Maquina.MaquinaEncordadora>()
+        var maquinasPerso = mutableListOf<MaquinaEncordadora>()
         HibernateManager.query {
-            val query: TypedQuery<Maquina.MaquinaEncordadora> = manager.createNamedQuery("MaquinaEncor.findAll", Maquina.MaquinaEncordadora::class.java)
+            val query: TypedQuery<MaquinaEncordadora> = manager.createNamedQuery("MaquinaEncor.findAll", MaquinaEncordadora::class.java)
             maquinasPerso = query.resultList
         }
         return maquinasPerso
     }
 
-    override fun findById(id: Int): Maquina.MaquinaEncordadora? {
+    override fun findById(id: Int): MaquinaEncordadora? {
         logger.debug { "findById($id)" }
-        var maquinaEncordar: Maquina.MaquinaEncordadora? = null
+        var maquinaEncordar: MaquinaEncordadora? = null
         HibernateManager.query {
-            maquinaEncordar = manager.find(Maquina.MaquinaEncordadora::class.java, id)
+            maquinaEncordar = manager.find(MaquinaEncordadora::class.java, id)
         }
         return maquinaEncordar
     }
 
-    override fun findbyUUID(uuid: UUID): Maquina.MaquinaEncordadora? {
+    override fun findbyUUID(uuid: UUID): MaquinaEncordadora? {
         logger.debug { "findByuuid($uuid)" }
-        var maquinaEncordar: Maquina.MaquinaEncordadora? = null
+        var maquinaEncordar: MaquinaEncordadora? = null
         HibernateManager.query {
-            val query:TypedQuery<Maquina.MaquinaEncordadora> = manager.createNamedQuery("MaquinaEncor.porNumSerie",  Maquina.MaquinaEncordadora::class.java)
+            val query:TypedQuery<MaquinaEncordadora> = manager.createNamedQuery("MaquinaEncor.porNumSerie",  MaquinaEncordadora::class.java)
+            query.setParameter("id", uuid)
             maquinaEncordar=query.singleResult
         }
         return maquinaEncordar
     }
 
-    override fun save(entity: Maquina.MaquinaEncordadora): Maquina.MaquinaEncordadora {
+    override fun save(entity: MaquinaEncordadora): MaquinaEncordadora {
         logger.debug { "save($entity)" }
         HibernateManager.transaction {
             manager.merge(entity)
@@ -50,11 +51,11 @@ class MaquinaEncordarRepositoryImpl :MaquinaEncordarRepository{
         return entity
     }
 
-    override fun delete(entity: Maquina.MaquinaEncordadora): Boolean {
+    override fun delete(entity: MaquinaEncordadora): Boolean {
         var result = false
         logger.debug { "delete($entity)" }
         HibernateManager.transaction {
-            val maquinaEncordar = manager.find(Maquina.MaquinaEncordadora::class.java, entity.id)//si no va cambiar a ID TODO MIRAR
+            val maquinaEncordar = manager.find(MaquinaEncordadora::class.java, entity.id)//si no va cambiar a ID TODO MIRAR
             maquinaEncordar?.let {
                 manager.remove(it)
                 result = true

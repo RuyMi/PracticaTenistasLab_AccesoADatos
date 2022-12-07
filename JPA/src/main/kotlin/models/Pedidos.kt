@@ -28,11 +28,11 @@ import javax.persistence.*
     NamedQuery(name = "Pedidos.findAll", query = "SELECT t FROM Pedidos t"),
     NamedQuery(
         name = "Pedidos.porUUID",
-        query = "SELECT t FROM Pedidos t WHERE t.uuid = t"
+        query = "SELECT t FROM Pedidos t WHERE t.uuid = :id"
     ),
 )
 data class Pedidos(
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id:Int,
     @Serializable(UUIDSerializer::class)
     @Column(name="UUID_Pedidos")
@@ -50,4 +50,4 @@ data class Pedidos(
     @JoinColumn(name = "usuario_uuid", referencedColumnName = "UUID_Usuario")
     val usuario:Usuario,
 
-    )
+    ): java.io.Serializable

@@ -35,6 +35,7 @@ class TareasRepositoryImpl : TareasRepository {
         var tarea: Tarea? = null
         HibernateManager.query {
             val query: TypedQuery<Tarea> = manager.createNamedQuery("Tareas.porUUID", Tarea::class.java)
+            query.setParameter("id", uuid)
             tarea=query.singleResult
         }
         return tarea

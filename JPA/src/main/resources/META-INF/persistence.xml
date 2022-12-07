@@ -13,7 +13,8 @@
         <!-- indicamos las clases a ser mapeadas por JPA -->
         <class>models.Tarea</class>
         <class>models.Usuario</class>
-        <class>models.Maquina</class>
+        <class>models.MaquinaPersonalizacion</class>
+        <class>models.MaquinaEncordadora</class>
         <class>models.Pedidos</class>
         <class>models.Producto</class>
         <class>models.Turno</class>

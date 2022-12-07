@@ -48,7 +48,7 @@ class Controlador(
      *
      * @return
      */
-    fun listarMaquinasPerso(): List<Maquina.MaquinaPersonalizacion> {
+    fun listarMaquinasPerso(): List<MaquinaPersonalizacion> {
         return MaquinaPersonalizacionRepositoryImpl.findAll()
     }
 
@@ -58,7 +58,7 @@ class Controlador(
      * @param id
      * @return
      */
-    fun encontrarMaquinaPersoID(id: Int): Maquina.MaquinaPersonalizacion? {
+    fun encontrarMaquinaPersoID(id: Int): MaquinaPersonalizacion? {
         return if(id > 0){
             MaquinaPersonalizacionRepositoryImpl.findById(id)
         } else{
@@ -73,7 +73,7 @@ class Controlador(
      * @param uuid
      * @return
      */
-    fun encontrarMaquinaPersoUUID(uuid: UUID): Maquina.MaquinaPersonalizacion? {
+    fun encontrarMaquinaPersoUUID(uuid: UUID): MaquinaPersonalizacion? {
         return MaquinaPersonalizacionRepositoryImpl.findbyUUID(uuid)
     }
 
@@ -83,7 +83,7 @@ class Controlador(
      * @param maquina
      * @return
      */
-    fun guardarMaquinaPerso(maquina: Maquina.MaquinaPersonalizacion): Maquina.MaquinaPersonalizacion {
+    fun guardarMaquinaPerso(maquina: MaquinaPersonalizacion): MaquinaPersonalizacion {
         return MaquinaPersonalizacionRepositoryImpl.save(maquina)
     }
 
@@ -93,7 +93,7 @@ class Controlador(
      * @param maquina
      * @return
      */
-    fun borrarMaquinaPerso(maquina: Maquina.MaquinaPersonalizacion): Boolean {
+    fun borrarMaquinaPerso(maquina: MaquinaPersonalizacion): Boolean {
         val temp = listarTareas().filter { !it.estadoCompletado }
         return if(temp.count{ it.maquinaPersonalizacion?.numSerie == maquina.numSerie} == 0){
             MaquinaPersonalizacionRepositoryImpl.delete(maquina)
@@ -110,7 +110,7 @@ class Controlador(
      *
      * @return
      */
-    fun listarMaquinasEncordar(): List<Maquina.MaquinaEncordadora> {
+    fun listarMaquinasEncordar(): List<MaquinaEncordadora> {
         return MaquinaEncordarRepositoryImpl.findAll()
     }
 
@@ -120,7 +120,7 @@ class Controlador(
      * @param id
      * @return
      */
-    fun encontrarMaquinaEncordarID(id: Int): Maquina.MaquinaEncordadora? {
+    fun encontrarMaquinaEncordarID(id: Int): MaquinaEncordadora? {
         if(id > 0){
             return MaquinaEncordarRepositoryImpl.findById(id)
         } else{
@@ -135,7 +135,7 @@ class Controlador(
      * @param uuid
      * @return
      */
-    fun encontrarMaquinaEncordarUUID(uuid: UUID): Maquina.MaquinaEncordadora? {
+    fun encontrarMaquinaEncordarUUID(uuid: UUID): MaquinaEncordadora? {
         return MaquinaEncordarRepositoryImpl.findbyUUID(uuid)
     }
 
@@ -145,7 +145,7 @@ class Controlador(
      * @param maquina
      * @return
      */
-    fun guardarMaquinaEncordar(maquina: Maquina.MaquinaEncordadora): Maquina.MaquinaEncordadora {
+    fun guardarMaquinaEncordar(maquina: MaquinaEncordadora): MaquinaEncordadora {
         return MaquinaEncordarRepositoryImpl.save(maquina)
 
     }
@@ -156,7 +156,7 @@ class Controlador(
      * @param maquina
      * @return
      */
-    fun borrarMaquinaEncordar(maquina: Maquina.MaquinaEncordadora): Boolean {
+    fun borrarMaquinaEncordar(maquina: MaquinaEncordadora): Boolean {
         val temp = listarTareas().filter { !it.estadoCompletado }
         return if (temp.count { it.maquinaEncordar?.numSerie == maquina.numSerie } == 0) {
             MaquinaEncordarRepositoryImpl.delete(maquina)

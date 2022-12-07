@@ -24,11 +24,11 @@ import javax.persistence.*
     NamedQuery(name = "Turnos.findAll", query = "SELECT t FROM Turno t"),
     NamedQuery(
         name = "Turno.porUUID",
-        query = "SELECT t FROM Turno t WHERE t.uuidTurno = t"
+        query = "SELECT t FROM Turno t WHERE t.uuidTurno = :id"
     ),
 )
 data class Turno(
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Int,
     @Serializable(UUIDSerializer::class)
     @Column(name="UUID_Turno")
@@ -38,5 +38,5 @@ data class Turno(
     val fechaInicio: LocalDateTime,
     @Serializable(LocalDateTimeSerializer::class)
     val fechaFin: LocalDateTime
-) {
+): java.io.Serializable {
 }
