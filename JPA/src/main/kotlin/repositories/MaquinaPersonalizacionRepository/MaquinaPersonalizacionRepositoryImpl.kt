@@ -35,6 +35,7 @@ class MaquinaPersonalizacionRepositoryImpl:MaquinaPersonalizacionRepository {
         var maquinaPerso: MaquinaPersonalizacion? = null
         HibernateManager.query {
             val query:TypedQuery<MaquinaPersonalizacion> = manager.createNamedQuery("MaquinaPerson.porNumSerie",  MaquinaPersonalizacion::class.java)
+            query.setParameter("id", uuid)
             maquinaPerso=query.singleResult
         }
         return maquinaPerso

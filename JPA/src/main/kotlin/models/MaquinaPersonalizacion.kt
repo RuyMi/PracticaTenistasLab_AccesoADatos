@@ -29,7 +29,7 @@ import java.util.*
         NamedQuery(name = "MaquinaPer.findAll", query = "SELECT t FROM MaquinaPersonalizacion t"),
         NamedQuery(
             name = "MaquinaPerson.porNumSerie",
-            query = "SELECT t FROM MaquinaPersonalizacion t WHERE t.numSerie = t"
+            query = "SELECT t FROM MaquinaPersonalizacion t WHERE t.numSerie = :id"
         ),
     )
     data class MaquinaPersonalizacion(

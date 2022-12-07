@@ -36,6 +36,7 @@ class ProductosRepositoryImpl : ProductosRepository {
         var producto: Producto? = null
         HibernateManager.query {
             val query: TypedQuery<Producto> = manager.createNamedQuery("Producto.porUUID", Producto::class.java)
+            query.setParameter("id", uuid)
             producto=query.singleResult
         }
         return producto

@@ -37,6 +37,7 @@ class MaquinaEncordarRepositoryImpl :MaquinaEncordarRepository{
         var maquinaEncordar: MaquinaEncordadora? = null
         HibernateManager.query {
             val query:TypedQuery<MaquinaEncordadora> = manager.createNamedQuery("MaquinaEncor.porNumSerie",  MaquinaEncordadora::class.java)
+            query.setParameter("id", uuid)
             maquinaEncordar=query.singleResult
         }
         return maquinaEncordar

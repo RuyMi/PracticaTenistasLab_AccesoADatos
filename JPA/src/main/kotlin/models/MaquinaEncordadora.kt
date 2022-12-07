@@ -19,7 +19,7 @@ import java.util.*
         NamedQuery(name = "MaquinaEncor.findAll", query = "SELECT t FROM MaquinaEncordadora t"),
         NamedQuery(
             name = "MaquinaEncor.porNumSerie",
-            query = "SELECT t FROM MaquinaEncordadora t WHERE t.numSerie = t"
+            query = "SELECT t FROM MaquinaEncordadora t WHERE t.numSerie = :id"
         ),
     )
     data class MaquinaEncordadora(

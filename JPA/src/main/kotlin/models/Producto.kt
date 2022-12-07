@@ -25,7 +25,7 @@ import javax.persistence.*
     NamedQuery(name = "Productos.findAll", query = "SELECT t FROM Producto t"),
     NamedQuery(
         name = "Producto.porUUID",
-        query = "SELECT t FROM Producto t WHERE t.uuid = t"
+        query = "SELECT t FROM Producto t WHERE t.uuid = :id"
     ),
 )
 data class Producto(
