@@ -17,5 +17,6 @@ fun PedidosDao.fromPedidosDaoToPedidos():Pedidos {
         fechaSalidaProgramada = fechaSalidaProgramada,
         fechaEntrega = fechaEntrega,
         precio = precio,
+        usuario = usuario.fromUsuarioDaoToUsuario()
     )
 }

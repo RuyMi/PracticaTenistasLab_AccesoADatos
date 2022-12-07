@@ -32,6 +32,7 @@ data class Pedidos(
     @Serializable(LocalDateSerializer::class)
     val fechaEntrega: LocalDate?,
     val precio: Double,
+    val usuario: Usuario
 
 
     )

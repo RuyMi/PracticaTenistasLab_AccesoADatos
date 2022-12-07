@@ -16,6 +16,7 @@ object PedidosTable : IntIdTable("PEDIDOS") {
     val fechaSalidaProgramada = date("fechaSalidaProgramada")
     val fechaEntrega = date("fechaEntrega").nullable()
     val precio = double("precio")
+    val usuario = reference("uuid_Usuario", UsuarioTable)
     //val tareas = reference("uuid_tarea", TareaTable)
    // val productos = reference("uuid_producto", ProductoTable)
 
@@ -43,6 +44,7 @@ class PedidosDao(id: EntityID<Int>): IntEntity(id) {
     var fechaSalidaProgramada by PedidosTable.fechaSalidaProgramada
     var fechaEntrega by PedidosTable.fechaEntrega
     var precio by PedidosTable.precio
+    var usuario by UsuarioDao referencedOn PedidosTable.usuario
 
     //var tareas by TareaDao referencedOn TareaTable.uuidTarea
    // var productos by ProductoDao referencedOn ProductoTable.uuid

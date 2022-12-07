@@ -1,6 +1,7 @@
 package repository.PedidosRepository
 
 import entities.*
+import exceptions.UsuarioException
 import mappers.fromMaquinaPersonalizacionDaoToMaquinaPersonalizacion
 import mappers.fromPedidosDaoToPedidos
 import mappers.fromTareaDaoToTarea
@@ -72,6 +73,7 @@ class PedidosRepositoryImpl(
                 fechaSalidaProgramada = entity.fechaSalidaProgramada
                 fechaEntrega = entity.fechaEntrega
                 precio = entity.precio
+                usuario = UsuarioDao.findById(entity.usuario.id)?: throw UsuarioException("El empleado no existe con id: ${entity.usuario.id}")
             }.fromPedidosDaoToPedidos()
         }
 
