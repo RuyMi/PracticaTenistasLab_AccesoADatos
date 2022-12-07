@@ -36,6 +36,7 @@ class UsuarioRepositoryImpl: UsuarioRepository {
         var usuario: Usuario? = null
         HibernateManager.query {
             val query: TypedQuery<Usuario> = manager.createNamedQuery("Usuario.porUUID", Usuario::class.java)
+            query.setParameter("uuid", uuid)
             usuario=query.singleResult
         }
         return usuario

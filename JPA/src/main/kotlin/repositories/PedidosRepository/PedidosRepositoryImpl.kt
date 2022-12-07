@@ -2,7 +2,6 @@ package repositories.PedidosRepository
 
 import HibernateManager.manager
 import models.Pedidos
-import models.Usuario
 import mu.KotlinLogging
 import repository.PedidosRepository.PedidosRepository
 import java.util.*

@@ -1,13 +1,14 @@
 package repository.MaquinaEncordarRepository
 
 
-import models.Maquina
+
+import models.MaquinaEncordadora
 import repositories.CrudRepository
 
 import java.util.*
 
 
-interface MaquinaEncordarRepository : CrudRepository<Maquina.MaquinaEncordadora, Int> {
+interface MaquinaEncordarRepository : CrudRepository<MaquinaEncordadora, Int> {
 
 
 }

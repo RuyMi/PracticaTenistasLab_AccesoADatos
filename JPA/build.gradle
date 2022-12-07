@@ -1,13 +1,13 @@
 plugins {
     id 'java'
-    id 'org.jetbrains.kotlin.jvm' version '1.7.10'
+    id 'org.jetbrains.kotlin.jvm' version '1.7.20'
 
-    id 'org.jetbrains.kotlin.plugin.allopen' version '1.7.10'
+    id 'org.jetbrains.kotlin.plugin.allopen' version '1.7.20'
     // Para que data class se conviertan en entidades de JPA si no tiene argumentos
     // y no trabajar con nulos
-    id 'org.jetbrains.kotlin.plugin.noarg' version '1.7.10'
+    id 'org.jetbrains.kotlin.plugin.noarg' version '1.7.20'
 
-    id'org.jetbrains.kotlin.plugin.serialization' version '1.7.10'
+    id'org.jetbrains.kotlin.plugin.serialization' version '1.7.20'
 
 }
 

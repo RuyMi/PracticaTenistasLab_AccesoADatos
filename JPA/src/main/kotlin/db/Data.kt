@@ -18,25 +18,25 @@ import java.util.*
 fun getTurnos(): List<Turno> {
     return listOf(
         Turno(
-            0,
+            1,
             UUID.randomUUID(),
             LocalDateTime.of(2022, 12, 5, 8, 0),
             LocalDateTime.of(2022, 12, 5, 10, 0)
         ),
         Turno(
-            0,
+            2,
             UUID.randomUUID(),
             LocalDateTime.of(2022, 12, 5, 10, 0),
             LocalDateTime.of(2022, 12, 5, 12, 0)
         ),
         Turno(
-            0,
+            3,
             UUID.randomUUID(),
             LocalDateTime.of(2022, 12, 5, 12, 0),
             LocalDateTime.of(2022, 12, 5, 14, 0)
         ),
         Turno(
-            0,
+            4,
             UUID.randomUUID(),
             LocalDateTime.of(2022, 12, 5, 14, 0),
             LocalDateTime.of(2022, 12, 5, 16, 0)
@@ -95,10 +95,10 @@ return listOf(
 )
 }
 
-fun getMaquinasEncordar(): List<Maquina.MaquinaEncordadora> {
+fun getMaquinasEncordar(): List<MaquinaEncordadora> {
     return listOf(
-        Maquina.MaquinaEncordadora(
-            0,
+        MaquinaEncordadora(
+            1,
             UUID.randomUUID(),
             "nadal",
             "rojo",
@@ -107,8 +107,8 @@ fun getMaquinasEncordar(): List<Maquina.MaquinaEncordadora> {
             20.0,
             12.4
         ),
-        Maquina.MaquinaEncordadora(
-            0,
+        MaquinaEncordadora(
+            2,
             UUID.randomUUID(),
             "nike",
             "verde",
@@ -117,8 +117,8 @@ fun getMaquinasEncordar(): List<Maquina.MaquinaEncordadora> {
             19.2,
             10.4
         ),
-        Maquina.MaquinaEncordadora(
-            0,
+        MaquinaEncordadora(
+            3,
             UUID.randomUUID(),
             "Adidas",
             "Azul",
@@ -127,8 +127,8 @@ fun getMaquinasEncordar(): List<Maquina.MaquinaEncordadora> {
             22.0,
             13.1
         ),
-        Maquina.MaquinaEncordadora(
-            0,
+        MaquinaEncordadora(
+            4,
             UUID.randomUUID(),
             "Apple",
             "morado",
@@ -140,10 +140,10 @@ fun getMaquinasEncordar(): List<Maquina.MaquinaEncordadora> {
     )
 }
 
-fun getMaquinasPersonalizacion(): List<Maquina.MaquinaPersonalizacion>{
+fun getMaquinasPersonalizacion(): List<MaquinaPersonalizacion>{
     return listOf(
-        Maquina.MaquinaPersonalizacion(
-            0,
+        MaquinaPersonalizacion(
+            1,
             UUID.randomUUID(),
             "perso1",
             "rojo",
@@ -152,8 +152,8 @@ fun getMaquinasPersonalizacion(): List<Maquina.MaquinaPersonalizacion>{
             1.0,
             10.4
         ),
-        Maquina.MaquinaPersonalizacion(
-            0,
+        MaquinaPersonalizacion(
+            2,
             UUID.randomUUID(),
             "nike",
             "verde",
@@ -162,8 +162,8 @@ fun getMaquinasPersonalizacion(): List<Maquina.MaquinaPersonalizacion>{
             19.2,
             10.4
         ),
-        Maquina.MaquinaPersonalizacion(
-            0,
+        MaquinaPersonalizacion(
+            3,
             UUID.randomUUID(),
             "Adidas",
             "Azul",
@@ -172,8 +172,8 @@ fun getMaquinasPersonalizacion(): List<Maquina.MaquinaPersonalizacion>{
             22.0,
             13.1
         ),
-        Maquina.MaquinaPersonalizacion(
-            0,
+        MaquinaPersonalizacion(
+            4,
             UUID.randomUUID(),
             "Apple",
             "morado",
@@ -185,55 +185,63 @@ fun getMaquinasPersonalizacion(): List<Maquina.MaquinaPersonalizacion>{
     )
 }
 
-fun getPedidos(): List<Pedidos>{
+fun getPedidos(): List<Pedidos?> {
     return listOf(
-        Pedidos(
-            0,
-            UUID.randomUUID(),
-            TipoEstado.EN_PROCESO,
-            LocalDate.now(),
-            LocalDate.of(2022, 12, 6),
-            null,
-            120.5,
-            UsuarioRepositoryImpl().findById(2)!!,
-        ),
-        Pedidos(
-            0,
-            UUID.randomUUID(),
-            TipoEstado.RECIBIDO,
-            LocalDate.now(),
-            LocalDate.of(2022, 12, 6),
-            LocalDate.of(2022, 12, 7),
-            120.5,
-            UsuarioRepositoryImpl().findById(2)!!,
-        ),
-        Pedidos(
-            0,
-            UUID.randomUUID(),
-            TipoEstado.TERMINADO,
-            LocalDate.now(),
-            LocalDate.of(2022, 12, 6),
-            null,
-            120.5,
-            UsuarioRepositoryImpl().findById(2)!!,
-        ),
-        Pedidos(
-            0,
-            UUID.randomUUID(),
-            TipoEstado.EN_PROCESO,
-            LocalDate.now(),
-            LocalDate.of(2022, 12, 6),
-            null,
-            120.5,
-            UsuarioRepositoryImpl().findById(2)!!,
-        )
+        UsuarioRepositoryImpl().findById(2)?.let {
+            Pedidos(
+                0,
+                UUID.randomUUID(),
+                TipoEstado.EN_PROCESO,
+                LocalDate.now(),
+                LocalDate.of(2022, 12, 6),
+                null,
+                120.5,
+                it,
+            )
+        },
+        UsuarioRepositoryImpl().findById(2)?.let {
+            Pedidos(
+                0,
+                UUID.randomUUID(),
+                TipoEstado.RECIBIDO,
+                LocalDate.now(),
+                LocalDate.of(2022, 12, 6),
+                LocalDate.of(2022, 12, 7),
+                120.5,
+                it,
+            )
+        },
+        UsuarioRepositoryImpl().findById(2)?.let {
+            Pedidos(
+                0,
+                UUID.randomUUID(),
+                TipoEstado.TERMINADO,
+                LocalDate.now(),
+                LocalDate.of(2022, 12, 6),
+                null,
+                120.5,
+                it,
+            )
+        },
+        UsuarioRepositoryImpl().findById(2)?.let {
+            Pedidos(
+                0,
+                UUID.randomUUID(),
+                TipoEstado.EN_PROCESO,
+                LocalDate.now(),
+                LocalDate.of(2022, 12, 6),
+                null,
+                120.5,
+                it,
+            )
+        }
     )
 }
 
 fun getProductos(): List<Producto>{
     return listOf(
         Producto(
-            0,
+            1,
             UUID.randomUUID(),
             "Wilson",
             "raqueta",
@@ -241,7 +249,7 @@ fun getProductos(): List<Producto>{
             12
         ),
         Producto(
-            0,
+            2,
             UUID.randomUUID(),
             "hola",
             "Overgrips",
@@ -249,7 +257,7 @@ fun getProductos(): List<Producto>{
             12
         ),
         Producto(
-            0,
+            3,
             UUID.randomUUID(),
             "adios",
             "grips",
@@ -262,7 +270,7 @@ fun getProductos(): List<Producto>{
 fun getTareas(): List<Tarea>{
     return listOf(
         Tarea(
-          0,
+          1,
             UUID.randomUUID(),
             ProductosRepositoryImpl().findById(1)!!,
             20.0,
@@ -275,7 +283,7 @@ fun getTareas(): List<Tarea>{
             PedidosRepositoryImpl().findById(1)!!
         ),
         Tarea(
-            0,
+            2,
             UUID.randomUUID(),
             ProductosRepositoryImpl().findById(3)!!,
             20.0,
@@ -288,7 +296,7 @@ fun getTareas(): List<Tarea>{
             PedidosRepositoryImpl().findById(3)!!
         ),
         Tarea(
-            0,
+            3,
             UUID.randomUUID(),
             ProductosRepositoryImpl().findById(2)!!,
             20.0,
@@ -301,7 +309,7 @@ fun getTareas(): List<Tarea>{
             PedidosRepositoryImpl().findById(3)!!
         ),
         Tarea(
-            0,
+            4,
             UUID.randomUUID(),
             ProductosRepositoryImpl().findById(1)!!,
             20.0,

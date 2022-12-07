@@ -29,7 +29,7 @@ import javax.persistence.*
     ),
 )
 data class Producto(
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id:Int,
     @Serializable(UUIDSerializer::class)
     @Column(name="UUID_Producto")
@@ -39,4 +39,4 @@ data class Producto(
     val modelo: String,
     val precio: Double,
     val stock: Int
-)
+): java.io.Serializable

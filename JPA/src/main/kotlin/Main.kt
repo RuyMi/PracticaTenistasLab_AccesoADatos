@@ -168,7 +168,7 @@ private fun meterDatos(controlador: Controlador) {
     val listaTurnos = controlador.listarTurnos()
     listaTurnos.forEach { println(it) }
 
-    getUsuarios().forEach { controlador.guardarUsuario(it!!) }
+    getUsuarios().forEach { it?.let { it1 -> controlador.guardarUsuario(it1) } }
     val listaUsuarios = controlador.listarUsuarios()
     listaUsuarios.forEach { println(it) }
 
@@ -184,7 +184,7 @@ private fun meterDatos(controlador: Controlador) {
     val listaProductos = controlador.listarProductos()
     listaProductos.forEach { println(it) }
 
-    getPedidos().forEach { controlador.guardarPedido(it) }
+    getPedidos().forEach { it?.let { it1 -> controlador.guardarPedido(it1) } }
     val listaPedidos = controlador.listarPedidos()
     listaPedidos.forEach { println(it) }
 
@@ -198,11 +198,6 @@ private fun meterDatos(controlador: Controlador) {
  *
  */
 fun initDataBase() {
-  /*  val appConfig = AppConfig.fromPropertiesFile("src/main/resources/config.properties")
-    println("Configuración: $appConfig")
-
-    // Iniciamos la base de datos con la configuracion que hemos leido
-    HibernateManager.init(appConfig)
     val meterAdmin =   Usuario(
         0,
         UUID.randomUUID(),
@@ -214,11 +209,9 @@ fun initDataBase() {
         null
     )
     println(meterAdmin.password)
-    UsuarioRepositoryImpl(UsuarioDao).save(meterAdmin)*/
-   // val properties = ApplicationProperties()
-    logger.debug { "Leyendo fichero de configuración..." + properties.readProperty("app.title") }
-    // Probamos la conexión a la base de datos e inicamos los datos!!
+
     HibernateManager.open()
     HibernateManager.close()
+    UsuarioRepositoryImpl().save(meterAdmin)
 
 }

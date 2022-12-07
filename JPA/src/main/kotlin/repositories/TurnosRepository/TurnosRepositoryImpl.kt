@@ -2,7 +2,6 @@ package repositories.TurnosRepository
 
 import HibernateManager.manager
 import models.Turno
-import models.Usuario
 import mu.KotlinLogging
 
 import repository.TurnosRepository.TurnosRepository
@@ -37,6 +36,7 @@ class TurnosRepositoryImpl:TurnosRepository {
         var turno: Turno? = null
         HibernateManager.query {
             val query: TypedQuery<Turno> = manager.createNamedQuery("Turno.porUUID", Turno::class.java)
+            query.setParameter("id", uuid)
             turno=query.singleResult
         }
         return turno

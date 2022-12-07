@@ -32,7 +32,7 @@ import javax.persistence.*
     ),
 )
 data class Pedidos(
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id:Int,
     @Serializable(UUIDSerializer::class)
     @Column(name="UUID_Pedidos")
@@ -50,4 +50,4 @@ data class Pedidos(
     @JoinColumn(name = "usuario_uuid", referencedColumnName = "UUID_Usuario")
     val usuario:Usuario,
 
-    )
+    ): java.io.Serializable
