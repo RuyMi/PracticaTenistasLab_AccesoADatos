@@ -5,31 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="69181c3f-781d-4790-9cc1-6205565dbd69" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Exposed/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Exposed/.idea/modules/PracticaTenistasLab_AccesoADatos.test.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Exposed/src/test/kotlin/controller/ControladorTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Exposed/src/test/kotlin/repository/MaquinaEncordarRepository/MaquinaEncordadoraRepositoryImplTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Exposed/src/test/kotlin/repository/MaquinaPersonalizacionRepository/MaquinaPersonalizacionRepositoryImplTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Exposed/src/test/kotlin/repository/PedidosRepository/PedidosRepositoryImplTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Exposed/src/test/kotlin/repository/ProductosRepository/ProductosRepositoryImplTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Exposed/src/test/kotlin/repository/TareasRepository/TareasRepositoryImplTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Exposed/src/test/kotlin/repository/TurnosRepository/TurnosRepositoryImplTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Exposed/src/test/kotlin/repository/UsuarioRepository/UsuarioRepositoryImplTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exposed/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/../Exposed/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exposed/metadata/DiagramaClasesTenisLabPNG.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exposed/metadata/DiagramaClasesTenisLabSVG.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exposed/src/main/kotlin/config/AppConfig.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Exposed/src/main/kotlin/config/AppConfig.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exposed/src/main/kotlin/controller/Controlador.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Exposed/src/main/kotlin/controller/Controlador.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exposed/src/main/kotlin/db/Data.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Exposed/src/main/kotlin/db/Data.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exposed/src/main/kotlin/entities/Pedidos.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Exposed/src/main/kotlin/entities/Pedidos.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exposed/src/main/kotlin/entities/Producto.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Exposed/src/main/kotlin/entities/Producto.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exposed/src/main/kotlin/mappers/PedidosMapper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Exposed/src/main/kotlin/mappers/PedidosMapper.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exposed/src/main/kotlin/models/Pedidos.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Exposed/src/main/kotlin/models/Pedidos.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exposed/src/main/kotlin/models/Producto.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Exposed/src/main/kotlin/models/Producto.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exposed/src/main/kotlin/repository/PedidosRepository/PedidosRepositoryImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Exposed/src/main/kotlin/repository/PedidosRepository/PedidosRepositoryImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exposed/src/main/kotlin/repository/TareasRepository/TareasRepositoryImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Exposed/src/main/kotlin/repository/TareasRepository/TareasRepositoryImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/db/Data.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/services/Password.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/controller/Controlador.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/controller/Controlador.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +38,14 @@
       </MavenImportingSettings>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="2IYOeWsn7cPdlCfX5eWfwuMLEvy" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -74,6 +63,32 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\alexl\OneDrive\Escritorio\CloneLab\PracticaTenistasLab_AccesoADatos\JPA\src\main\kotlin\db" />
+      <recent name="C:\Users\alexl\OneDrive\Escritorio\CloneLab\PracticaTenistasLab_AccesoADatos\JPA\src\main\kotlin\repositories" />
+      <recent name="C:\Users\alexl\OneDrive\Escritorio\CloneLab\PracticaTenistasLab_AccesoADatos\JPA\src\main\kotlin\models\enums" />
+      <recent name="C:\Users\alexl\OneDrive\Escritorio\CloneLab\PracticaTenistasLab_AccesoADatos\JPA\src\main\kotlin\serializers" />
+    </key>
+    <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="services" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="PracticaTenistasLab_AccesoADatos" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="PracticaTenistasLab_AccesoADatos" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -82,12 +97,24 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1670355146553</updated>
-      <workItem from="1670355147640" duration="172000" />
-      <workItem from="1670427556569" duration="1198000" />
+      <workItem from="1670355147640" duration="63000" />
+      <workItem from="1670428583002" duration="11214000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
