@@ -66,6 +66,8 @@ dependencies {
     // Si queremos usar Mokk para test, es mokito para Kotlin
     implementation("io.mockk:mockk:1.13.2")
 
+    implementation("com.google.guava:guava:31.1-jre")
+
 }
 
 test {
