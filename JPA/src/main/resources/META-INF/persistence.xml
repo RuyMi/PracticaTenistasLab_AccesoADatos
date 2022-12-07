@@ -6,9 +6,17 @@
         <description>Practica realizada con JPA de TenisLab</description>
         <!--   Indicamos el “provider” que es la implementación de JPA que estamos usando.
                En nuestro ejemplo hibernate, pero existen otros proveedores como EclipseLink:   -->
-        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+      <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+
 
         <!-- indicamos las clases a ser mapeadas por JPA -->
+        <class>models.Tarea</class>
+        <class>models.Usuario</class>
+        <class>models.Maquina</class>
+        <class>models.Pedidos</class>
+        <class>models.Producto</class>
+        <class>models.Turno</class>
 
         <!--   Indicamos las propiedades de configuración de la implementación de JPA que estamos usando -->
         <properties>
