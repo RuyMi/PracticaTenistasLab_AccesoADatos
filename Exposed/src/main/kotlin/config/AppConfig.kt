@@ -30,6 +30,28 @@ data class AppConfig(
             jdbcCreateTables = true,
             jdbcshowSQL = true,
         )
+        val TEST1 = AppConfig(
+            nombre = "test1",
+            version = "1.0.0",
+            jdbcUrl = "jdbc:h2:mem:TenistasLabTest1;DB_CLOSE_DELAY=-1;",
+            jdbcUserName = "sa",
+            jdbcPassword = "",
+            jdbcDriverClassName = "org.h2.Driver",
+            jdbcMaximumPoolSize = 10,
+            jdbcCreateTables = true,
+            jdbcshowSQL = true,
+        )
+        val TEST2 = AppConfig(
+            nombre = "test2",
+            version = "1.0.0",
+            jdbcUrl = "jdbc:h2:mem:TenistasLabTest2;DB_CLOSE_DELAY=-1;",
+            jdbcUserName = "sa",
+            jdbcPassword = "",
+            jdbcDriverClassName = "org.h2.Driver",
+            jdbcMaximumPoolSize = 10,
+            jdbcCreateTables = true,
+            jdbcshowSQL = true,
+        )
 
         fun fromPropertiesFile(fileName: String): AppConfig {
             logger.debug { "Loading properties from file: $fileName" }

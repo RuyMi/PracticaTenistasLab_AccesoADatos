@@ -32,6 +32,7 @@ dependencies {
     implementation("com.zaxxer:HikariCP:5.0.1")
 
     implementation("com.google.guava:guava:31.1-jre")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
 
 }
 

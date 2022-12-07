@@ -11,6 +11,7 @@ object ProductoTable : IntIdTable("PRODUCTO") {
     val modelo = varchar("modelo", 100)
     val precio = double("precio")
     val stock = integer("stock")
+
     //val id = integer("id").autoIncrement().entityId()
 
 }
@@ -34,6 +35,7 @@ class ProductoDao(id: EntityID<Int>): IntEntity(id) {
     var modelo by ProductoTable.modelo
     var precio by ProductoTable.precio
     var stock by ProductoTable.stock
+
 }
 
 

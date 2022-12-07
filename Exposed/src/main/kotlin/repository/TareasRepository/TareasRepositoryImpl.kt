@@ -63,10 +63,10 @@ class TareasRepositoryImpl(
         logger.debug { "save($entity) - creando" }
         return tareasDao.new() {
             uuidTarea = entity.uuidTarea
-            producto = ProductoDao.findById(entity.producto.id)?: throw ProductoException("El producto no existe con id: ${entity.turno.id}")
+            producto = ProductoDao.findById(entity.producto.id)?: throw ProductoException("El producto no existe con id: ${entity.producto.id}")
             precio = entity.precio
             descripcion = entity.descripcion
-            empleado = UsuarioDao.findById(entity.empleado.id)?: throw UsuarioException("El empleado no existe con id: ${entity.turno.id}")
+            empleado = UsuarioDao.findById(entity.empleado.id)?: throw UsuarioException("El empleado no existe con id: ${entity.empleado.id}")
             turno = TurnoDao.findById(entity.turno.id)?: throw TurnoException("El turno no existe con id: ${entity.turno.id}")
             estadoCompletado = entity.estadoCompletado
             maquinaEncordar = entity.maquinaEncordar?.let { MaquinaEncordarDao.findById(it.id) }
@@ -80,10 +80,10 @@ class TareasRepositoryImpl(
         // Si existe actualizamos
         return existe.apply {
             uuidTarea = entity.uuidTarea
-            producto = ProductoDao.findById(entity.producto.id)?: throw ProductoException("El producto no existe con id: ${entity.turno.id}")
+            producto = ProductoDao.findById(entity.producto.id)?: throw ProductoException("El producto no existe con id: ${entity.producto.id}")
             precio = entity.precio
             descripcion = entity.descripcion
-            empleado = UsuarioDao.findById(entity.empleado.id)?: throw UsuarioException("El empleado no existe con id: ${entity.turno.id}")
+            empleado = UsuarioDao.findById(entity.empleado.id)?: throw UsuarioException("El empleado no existe con id: ${entity.empleado.id}")
             turno = TurnoDao.findById(entity.turno.id)?: throw TurnoException("El turno no existe con id: ${entity.turno.id}")
             estadoCompletado = entity.estadoCompletado
             maquinaEncordar = entity.maquinaEncordar?.let { MaquinaEncordarDao.findById(it.id) }

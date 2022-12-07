@@ -202,8 +202,14 @@ class Controlador(
      * @param pedidos
      * @return
      */
-    fun guardarPedido(pedidos: Pedidos): Pedidos {
-        return PedidosRepositoryImpl.save(pedidos)
+    fun guardarPedido(pedidos: Pedidos): Pedidos? {
+        if(usuarioActual.perfil == TipoPerfil.ADMINISTRADOR || usuarioActual.perfil == TipoPerfil.USUARIO){
+            return PedidosRepositoryImpl.save(pedidos)
+        }else{
+            logger.debug{"Solo los usuarios o administradores pueden crear pedidos"}
+            return null
+        }
+
     }
 
     /**

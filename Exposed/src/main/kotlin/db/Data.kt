@@ -194,7 +194,8 @@ fun getPedidos(): List<Pedidos>{
             LocalDate.now(),
             LocalDate.of(2022, 12, 6),
             null,
-            120.5
+            120.5,
+            UsuarioRepositoryImpl(UsuarioDao).findById(2)!!,
         ),
         Pedidos(
             0,
@@ -203,7 +204,8 @@ fun getPedidos(): List<Pedidos>{
             LocalDate.now(),
             LocalDate.of(2022, 12, 6),
             LocalDate.of(2022, 12, 7),
-            120.5
+            120.5,
+            UsuarioRepositoryImpl(UsuarioDao).findById(2)!!,
         ),
         Pedidos(
             0,
@@ -212,7 +214,8 @@ fun getPedidos(): List<Pedidos>{
             LocalDate.now(),
             LocalDate.of(2022, 12, 6),
             null,
-            120.5
+            120.5,
+            UsuarioRepositoryImpl(UsuarioDao).findById(2)!!,
         ),
         Pedidos(
             0,
@@ -221,7 +224,8 @@ fun getPedidos(): List<Pedidos>{
             LocalDate.now(),
             LocalDate.of(2022, 12, 6),
             null,
-            120.5
+            120.5,
+            UsuarioRepositoryImpl(UsuarioDao).findById(2)!!,
         )
     )
 }
