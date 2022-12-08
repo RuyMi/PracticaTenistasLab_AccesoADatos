@@ -316,3 +316,4 @@ fun getTareas(): List<Tarea>{
     )
 }
 
+// Tarea, Producto, Pedido, MaquinaE, MaquinaP, Usuario, Turno

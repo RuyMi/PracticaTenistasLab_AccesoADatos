@@ -58,6 +58,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -71,7 +72,7 @@
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\alexl\OneDrive\Escritorio\CloneLab\PracticaTenistasLab_AccesoADatos\JPA\src\main\kotlin\exception" />
@@ -81,11 +82,33 @@
       <recent name="C:\Users\alexl\OneDrive\Escritorio\CloneLab\PracticaTenistasLab_AccesoADatos\JPA\src\main\kotlin\models\enums" />
     </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="kotlin.controller" />
       <recent name="models" />
       <recent name="services" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Tests in 'JPA.test'">
+  <component name="RunManager" selected="Gradle.TareasRepositoryImplTest">
+    <configuration name="JPA [test]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="TareasRepositoryImplTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -100,50 +123,6 @@
             <option value=":test" />
             <option value="--tests" />
             <option value="&quot;repository.TareasRepository.TareasRepositoryImplTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="Tests in 'JPA.test'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="Tests in 'kotlin'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;kotlin.*&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -176,7 +155,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="TurnosRepositoryImplTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="Tests in 'kotlin.repositories.MaquinaEncordarRepository'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -189,7 +168,35 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;repository.TurnosRepository.TurnosRepositoryImplTest&quot;" />
+            <option value="&quot;kotlin.repositories.MaquinaEncordarRepository.*&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="repository.MaquinaEncordarRepository.MaquinaEncordarRepositoryImplTest and 6 more" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests &quot;repository.MaquinaEncordarRepository.MaquinaEncordarRepositoryImplTest&quot;" />
+            <option value="--tests &quot;repository.MaquinaPersonalizacionRepository.MaquinaPersonalizacionRepositoryImplTest&quot;" />
+            <option value="--tests &quot;repository.PedidosRepository.PedidosRepositoryImplTest&quot;" />
+            <option value="--tests &quot;repository.ProductosRepository.ProductosRepositoryImplTest&quot;" />
+            <option value="--tests &quot;repository.TareasRepository.TareasRepositoryImplTest&quot;" />
+            <option value="--tests &quot;repository.TurnosRepository.TurnosRepositoryImplTest&quot;" />
+            <option value="--tests &quot;repository.UsuarioRepository.UsuarioRepositoryImplTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -214,11 +221,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.Tests in 'JPA.test'" />
-        <item itemvalue="Gradle.Tests in 'kotlin'" />
-        <item itemvalue="Gradle.Tests in 'kotlin.repositories'" />
         <item itemvalue="Gradle.TareasRepositoryImplTest" />
-        <item itemvalue="Gradle.TurnosRepositoryImplTest" />
+        <item itemvalue="Gradle.repository.MaquinaEncordarRepository.MaquinaEncordarRepositoryImplTest and 6 more" />
+        <item itemvalue="Gradle.Tests in 'kotlin.repositories.MaquinaEncordarRepository'" />
+        <item itemvalue="Gradle.JPA [test]" />
+        <item itemvalue="Gradle.Tests in 'kotlin.repositories'" />
       </list>
     </recent_temporary>
   </component>
@@ -231,7 +238,8 @@
       <option name="presentableId" value="Default" />
       <updated>1670355146553</updated>
       <workItem from="1670355147640" duration="63000" />
-      <workItem from="1670428583002" duration="16734000" />
+      <workItem from="1670428583002" duration="11214000" />
+      <workItem from="1670523521109" duration="899000" />
     </task>
     <servers />
   </component>
