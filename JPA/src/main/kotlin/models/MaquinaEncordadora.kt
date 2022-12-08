@@ -8,11 +8,21 @@ import serializers.UUIDSerializer
 import java.time.LocalDate
 import java.util.*
 
+
 /**
- * Maquina
+ * Maquina encordadora
  *
+ * @property id
+ * @property numSerie
+ * @property marca
+ * @property modelo
+ * @property fechaAdquisicion
+ * @property automatico
+ * @property tensionMaxima
+ * @property tensionMinima
+ * @constructor Create empty Maquina encordadora
  */
-    @Serializable
+@Serializable
     @Entity
     @Table(name = "MaquinaEncordadora")
     @NamedQueries(

@@ -1,6 +1,8 @@
 package repositories.MaquinaEncordarRepository
 
 import HibernateManager.manager
+import exceptions.MaquinaException
+import exceptions.UsuarioException
 import models.MaquinaEncordadora
 import mu.KotlinLogging
 
@@ -11,6 +13,11 @@ import javax.persistence.TypedQuery
 
 private val logger = KotlinLogging.logger {}
 
+/**
+ * Maquina encordar repository impl
+ *
+ * @constructor Create empty Maquina encordar repository impl
+ */
 class MaquinaEncordarRepositoryImpl :MaquinaEncordarRepository{
 
     override fun findAll(): List<MaquinaEncordadora> {
@@ -27,7 +34,7 @@ class MaquinaEncordarRepositoryImpl :MaquinaEncordarRepository{
         logger.debug { "findById($id)" }
         var maquinaEncordar: MaquinaEncordadora? = null
         HibernateManager.query {
-            maquinaEncordar = manager.find(MaquinaEncordadora::class.java, id)
+            maquinaEncordar = manager.find(MaquinaEncordadora::class.java, id)?: throw MaquinaException("La maquina no existe con id: ${id}")
         }
         return maquinaEncordar
     }
@@ -55,7 +62,7 @@ class MaquinaEncordarRepositoryImpl :MaquinaEncordarRepository{
         var result = false
         logger.debug { "delete($entity)" }
         HibernateManager.transaction {
-            val maquinaEncordar = manager.find(MaquinaEncordadora::class.java, entity.id)//si no va cambiar a ID TODO MIRAR
+            val maquinaEncordar = manager.find(MaquinaEncordadora::class.java, entity.id)
             maquinaEncordar?.let {
                 manager.remove(it)
                 result = true

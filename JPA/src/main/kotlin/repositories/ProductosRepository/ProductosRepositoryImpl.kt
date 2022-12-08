@@ -10,6 +10,11 @@ import javax.persistence.TypedQuery
 
 private val logger = KotlinLogging.logger {}
 
+/**
+ * Productos repository impl
+ *
+ * @constructor Create empty Productos repository impl
+ */
 class ProductosRepositoryImpl : ProductosRepository {
 
     override fun findAll(): List<Producto> {
@@ -54,7 +59,7 @@ class ProductosRepositoryImpl : ProductosRepository {
         var result = false
        logger.debug { "delete($entity)" }
         HibernateManager.transaction {
-            val producto = manager.find(Producto::class.java, entity.id)//si no va cambiar a ID TODO MIRAR
+            val producto = manager.find(Producto::class.java, entity.id)
             producto?.let {
                 manager.remove(it)
                 result = true

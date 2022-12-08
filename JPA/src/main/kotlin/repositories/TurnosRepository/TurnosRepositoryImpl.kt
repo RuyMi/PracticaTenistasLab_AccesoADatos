@@ -10,6 +10,11 @@ import javax.persistence.TypedQuery
 
 private val logger = KotlinLogging.logger {}
 
+/**
+ * Turnos repository impl
+ *
+ * @constructor Create empty Turnos repository impl
+ */
 class TurnosRepositoryImpl:TurnosRepository {
 
     override fun findAll(): List<Turno> {
@@ -54,7 +59,7 @@ class TurnosRepositoryImpl:TurnosRepository {
         var result = false
         logger.debug { "delete($entity)" }
         HibernateManager.transaction {
-            val turno = manager.find(Turno::class.java, entity.id)//si no va cambiar a ID TODO MIRAR
+            val turno = manager.find(Turno::class.java, entity.id)
             turno?.let {
                 manager.remove(it)
                 result = true

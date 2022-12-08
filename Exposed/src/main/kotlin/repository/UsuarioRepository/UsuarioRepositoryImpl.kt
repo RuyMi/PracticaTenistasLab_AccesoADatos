@@ -1,6 +1,7 @@
 package repository.UsuarioRepository
 
 import entities.*
+import exceptions.MaquinaException
 import exceptions.TurnoException
 import mappers.fromPedidosDaoToPedidos
 import mappers.fromUsuarioDaoToUsuario
@@ -67,7 +68,7 @@ class UsuarioRepositoryImpl(
             email=entity.email
             password=entity.password
             perfil=entity.perfil
-            turno= entity.turno?.let { TurnoDao.findById(it.id) }
+            turno= entity.turno?.let { TurnoDao.findById(it.id)?: throw TurnoException("El turno no existe con id: ${entity.turno.id}") }
         }.fromUsuarioDaoToUsuario()
     }
 
@@ -81,7 +82,7 @@ class UsuarioRepositoryImpl(
             email=entity.email
             password=entity.password
             perfil=entity.perfil
-            turno= entity.turno?.let { TurnoDao.findById(it.id) }
+            turno= entity.turno?.let { TurnoDao.findById(it.id)?: throw TurnoException("El turno no existe con id: ${entity.turno.id}") }
         }.fromUsuarioDaoToUsuario()
     }
 

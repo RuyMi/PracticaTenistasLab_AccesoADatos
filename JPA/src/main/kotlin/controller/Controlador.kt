@@ -46,7 +46,7 @@ class Controlador(
     /**
      * Listar maquinas perso
      *
-     * @return
+     * @return devuelve una lista de MaquinaPersonalizacion
      */
     fun listarMaquinasPerso(): List<MaquinaPersonalizacion> {
         return MaquinaPersonalizacionRepositoryImpl.findAll()
@@ -56,7 +56,7 @@ class Controlador(
      * Encontrar maquina perso i d
      *
      * @param id
-     * @return
+     * @return  Una MaquinaPersonalizacion
      */
     fun encontrarMaquinaPersoID(id: Int): MaquinaPersonalizacion? {
         return if(id > 0){
@@ -71,7 +71,7 @@ class Controlador(
      * Encontrar maquina perso u u i d
      *
      * @param uuid
-     * @return
+     * @return Una MaquinaPersonalizacion
      */
     fun encontrarMaquinaPersoUUID(uuid: UUID): MaquinaPersonalizacion? {
         return MaquinaPersonalizacionRepositoryImpl.findbyUUID(uuid)
@@ -81,7 +81,7 @@ class Controlador(
      * Guardar maquina perso
      *
      * @param maquina
-     * @return
+     * @return guarda una MaquinaPersonalizacion
      */
     fun guardarMaquinaPerso(maquina: MaquinaPersonalizacion): MaquinaPersonalizacion {
         return MaquinaPersonalizacionRepositoryImpl.save(maquina)
@@ -91,7 +91,7 @@ class Controlador(
      * Borrar maquina perso
      *
      * @param maquina
-     * @return
+     * @return devuelve true si borra la maquina
      */
     fun borrarMaquinaPerso(maquina: MaquinaPersonalizacion): Boolean {
         val temp = listarTareas().filter { !it.estadoCompletado }
@@ -108,7 +108,7 @@ class Controlador(
     /**
      * Listar maquinas encordar
      *
-     * @return
+     * @return devuelve una lista de MaquinaEncordadora
      */
     fun listarMaquinasEncordar(): List<MaquinaEncordadora> {
         return MaquinaEncordarRepositoryImpl.findAll()
@@ -118,7 +118,7 @@ class Controlador(
      * Encontrar maquina encordar id
      *
      * @param id
-     * @return
+     * @return devuelve una MaquinaEncordadora
      */
     fun encontrarMaquinaEncordarID(id: Int): MaquinaEncordadora? {
         if(id > 0){
@@ -133,7 +133,7 @@ class Controlador(
      * Encontrar maquina encordar uuid
      *
      * @param uuid
-     * @return
+     * @return devuelve una MaquinaEncordadora
      */
     fun encontrarMaquinaEncordarUUID(uuid: UUID): MaquinaEncordadora? {
         return MaquinaEncordarRepositoryImpl.findbyUUID(uuid)
@@ -143,7 +143,7 @@ class Controlador(
      * Guardar maquina encordar
      *
      * @param maquina
-     * @return
+     * @return guarda una MaquinaEncordadora
      */
     fun guardarMaquinaEncordar(maquina: MaquinaEncordadora): MaquinaEncordadora {
         return MaquinaEncordarRepositoryImpl.save(maquina)
@@ -154,7 +154,7 @@ class Controlador(
      * Borrar maquina encordar
      *
      * @param maquina
-     * @return
+     * @return devuelve true si borra la maquina
      */
     fun borrarMaquinaEncordar(maquina: MaquinaEncordadora): Boolean {
         val temp = listarTareas().filter { !it.estadoCompletado }
@@ -168,7 +168,7 @@ class Controlador(
     /**
      * Listar pedidos
      *
-     * @return
+     * @return una lista de Pedidos
      *///Pedidos
     fun listarPedidos(): List<Pedidos> {
         return PedidosRepositoryImpl.findAll()
@@ -178,7 +178,7 @@ class Controlador(
      * Encontrar pedido i d
      *
      * @param id
-     * @return
+     * @return devuelve un Pedido
      */
     fun encontrarPedidoID(id: Int): Pedidos? {
         if(id > 0){
@@ -193,7 +193,7 @@ class Controlador(
      * Encontrar pedido u u i d
      *
      * @param uuid
-     * @return
+     * @return devuelve un Pedido
      */
     fun encontrarPedidoUUID(uuid: UUID): Pedidos? {
         return PedidosRepositoryImpl.findbyUUID(uuid)
@@ -203,7 +203,7 @@ class Controlador(
      * Guardar pedido
      *
      * @param pedidos
-     * @return
+     * @return guarda un Pedidos
      */
     fun guardarPedido(pedidos: Pedidos): Pedidos {
         return PedidosRepositoryImpl.save(pedidos)
@@ -213,7 +213,7 @@ class Controlador(
      * Borrar pedido
      *
      * @param pedidos
-     * @return
+     * @return devuelve true si borra un pedido
      */
     fun borrarPedido(pedidos: Pedidos): Boolean {
         return PedidosRepositoryImpl.delete(pedidos)
@@ -222,7 +222,7 @@ class Controlador(
     /**
      * Listar productos
      *
-     * @return
+     * @return una lista de Producto
      *///Productos
     fun listarProductos(): List<Producto> {
         return ProductoRepositoryImpl.findAll()
@@ -232,7 +232,7 @@ class Controlador(
      * Encontrar producto i d
      *
      * @param id
-     * @return
+     * @return devuelve un Producto
      */
     fun encontrarProductoID(id: Int): Producto? {
         if(id > 0){
@@ -247,7 +247,7 @@ class Controlador(
      * Encontrar producto u u i d
      *
      * @param uuid
-     * @return
+     * @return devuelve un Producto
      */
     fun encontrarProductoUUID(uuid: UUID): Producto? {
         return ProductoRepositoryImpl.findbyUUID(uuid)
@@ -257,7 +257,7 @@ class Controlador(
      * Guardar producto
      *
      * @param producto
-     * @return
+     * @return guarda un Producto
      */
     fun guardarProducto(producto: Producto): Producto? {
         return if(usuarioActual.perfil == TipoPerfil.ADMINISTRADOR){
@@ -271,7 +271,7 @@ class Controlador(
      * Borrar producto
      *
      * @param producto
-     * @return
+     * @return devuelve un true si borra el producto
      */
     fun borrarProducto(producto: Producto): Boolean {
         return ProductoRepositoryImpl.delete(producto)
@@ -280,7 +280,7 @@ class Controlador(
     /**
      * Listar tareas
      *
-     * @return
+     * @return una lista de Tareas
      *///Tareas
     fun listarTareas(): List<Tarea> {
         return TareaRepositoryImpl.findAll()
@@ -290,7 +290,7 @@ class Controlador(
      * Encontrar tarea i d
      *
      * @param id
-     * @return
+     * @return devuelve una Tarea
      */
     fun encontrarTareaID(id: Int): Tarea? {
         if(id > 0){
@@ -305,7 +305,7 @@ class Controlador(
      * Encontrar tarea u u i d
      *
      * @param uuid
-     * @return
+     * @return devuelve una Tarea
      */
     fun encontrarTareaUUID(uuid: UUID): Tarea? {
         return TareaRepositoryImpl.findbyUUID(uuid)
@@ -315,7 +315,7 @@ class Controlador(
      * Guardar tarea
      *
      * @param tarea
-     * @return
+     * @return guarda una Tarea
      *//*
     En caso de que la tarea no este en un turno se podrá añadir ese turno, si no, no podrá añadirse
     a otro turno.
@@ -343,7 +343,7 @@ class Controlador(
      * Borrar tarea
      *
      * @param tarea
-     * @return
+     * @return devuelve un true si se borra
      */
     fun borrarTarea(tarea: Tarea): Boolean {
         return TareaRepositoryImpl.delete(tarea)
@@ -352,7 +352,7 @@ class Controlador(
     /**
      * Listar usuarios
      *
-     * @return
+     * @return devuelve una lista de Usuarios
      *///Usuario
     fun listarUsuarios(): List<Usuario> {
         return UsuarioRepositoryImpl.findAll()
@@ -362,7 +362,7 @@ class Controlador(
      * Encontrar usuario i d
      *
      * @param id
-     * @return
+     * @return devuelve un Usuario
      */
     fun encontrarUsuarioID(id: Int): Usuario? {
         if(id > 0){
@@ -377,7 +377,7 @@ class Controlador(
      * Encontrar usuario u u i d
      *
      * @param uuid
-     * @return
+     * @return devuelve un Usuario
      */
     fun encontrarUsuarioUUID(uuid: UUID): Usuario? {
         return UsuarioRepositoryImpl.findbyUUID(uuid)
@@ -387,7 +387,7 @@ class Controlador(
      * Guardar usuario
      *
      * @param usuario
-     * @return
+     * @return devuelve el usuario guardado
      */
     fun guardarUsuario(usuario: Usuario): Usuario {
         return UsuarioRepositoryImpl.save(usuario)
@@ -397,7 +397,7 @@ class Controlador(
      * Borrar usuario
      *
      * @param usuario
-     * @return
+     * @return devuelve true si borra al usuario
      */
     fun borrarUsuario(usuario: Usuario): Boolean {
         return if(usuario.perfil == TipoPerfil.ENCORDADOR){
@@ -415,7 +415,7 @@ class Controlador(
     /**
      * Listar turnos
      *
-     * @return
+     * @return una lista de turnos
      *///Turnos
     fun listarTurnos(): List<Turno> {
         return TurnosRepositoryImpl.findAll()
@@ -425,7 +425,7 @@ class Controlador(
      * Encontrar turno id
      *
      * @param id
-     * @return
+     * @return  devuelve un turno
      */
     fun encontrarTurnoID(id: Int): Turno? {
         if(id > 0){
@@ -440,7 +440,7 @@ class Controlador(
      * Encontrar turno uuid
      *
      * @param uuid
-     * @return
+     * @return devuelve un turno
      */
     fun encontrarTurnoUUID(uuid: UUID): Turno? {
         return TurnosRepositoryImpl.findbyUUID(uuid)
@@ -450,7 +450,7 @@ class Controlador(
      * Guardar turno
      *
      * @param turno
-     * @return
+     * @return devuelve el turno guardado
      */
     fun guardarTurno(turno: Turno): Turno {
         return TurnosRepositoryImpl.save(turno)
@@ -460,7 +460,7 @@ class Controlador(
      * Borrar turno
      *
      * @param turno
-     * @return
+     * @return devuelve true si borra el turno
      */
     fun borrarTurno(turno: Turno): Boolean {
         return TurnosRepositoryImpl.delete(turno)

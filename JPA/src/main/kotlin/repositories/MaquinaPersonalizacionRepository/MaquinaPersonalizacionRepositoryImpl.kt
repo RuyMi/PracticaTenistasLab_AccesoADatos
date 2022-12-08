@@ -9,6 +9,11 @@ import javax.persistence.TypedQuery
 
 private val logger = KotlinLogging.logger {}
 
+/**
+ * Maquina personalizacion repository impl
+ *
+ * @constructor Create empty Maquina personalizacion repository impl
+ */
 class MaquinaPersonalizacionRepositoryImpl:MaquinaPersonalizacionRepository {
 
     override fun findAll(): List<MaquinaPersonalizacion> {
@@ -53,7 +58,7 @@ class MaquinaPersonalizacionRepositoryImpl:MaquinaPersonalizacionRepository {
         var result = false
         logger.debug { "delete($entity)" }
         HibernateManager.transaction {
-            val maquinaPerso = manager.find(MaquinaPersonalizacion::class.java, entity.id)//si no va cambiar a ID TODO MIRAR
+            val maquinaPerso = manager.find(MaquinaPersonalizacion::class.java, entity.id)
             maquinaPerso?.let {
                 manager.remove(it)
                 result = true

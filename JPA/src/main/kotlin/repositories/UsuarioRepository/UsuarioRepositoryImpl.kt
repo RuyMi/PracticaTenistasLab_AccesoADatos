@@ -9,6 +9,11 @@ import javax.persistence.TypedQuery
 
 private val logger = KotlinLogging.logger {}
 
+/**
+ * Usuario repository impl
+ *
+ * @constructor Create empty Usuario repository impl
+ */
 class UsuarioRepositoryImpl: UsuarioRepository {
 
 
@@ -54,7 +59,7 @@ class UsuarioRepositoryImpl: UsuarioRepository {
         var result = false
         logger.debug { "delete($entity)" }
         HibernateManager.transaction {
-            val usuario = manager.find(Usuario::class.java, entity.id)//si no va cambiar a ID TODO MIRAR
+            val usuario = manager.find(Usuario::class.java, entity.id)
             usuario?.let {
                 manager.remove(it)
                 result = true
