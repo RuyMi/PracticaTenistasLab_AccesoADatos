@@ -62,7 +62,7 @@ class MaquinaEncordarRepositoryImpl :MaquinaEncordarRepository{
         var result = false
         logger.debug { "delete($entity)" }
         HibernateManager.transaction {
-            val maquinaEncordar = manager.find(MaquinaEncordadora::class.java, entity.id)//si no va cambiar a ID TODO MIRAR
+            val maquinaEncordar = manager.find(MaquinaEncordadora::class.java, entity.id)
             maquinaEncordar?.let {
                 manager.remove(it)
                 result = true

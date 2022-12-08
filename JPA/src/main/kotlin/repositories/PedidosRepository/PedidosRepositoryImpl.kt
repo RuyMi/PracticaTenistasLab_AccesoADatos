@@ -59,7 +59,7 @@ class PedidosRepositoryImpl:PedidosRepository {
         var result = false
         logger.debug { "delete($entity)" }
         HibernateManager.transaction {
-            val pedido = manager.find(Pedidos::class.java, entity.id)//si no va cambiar a ID TODO MIRAR
+            val pedido = manager.find(Pedidos::class.java, entity.id)
             pedido?.let {
                 manager.remove(it)
                 result = true
