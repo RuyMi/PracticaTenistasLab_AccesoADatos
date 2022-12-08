@@ -10,6 +10,11 @@ import javax.persistence.TypedQuery
 
 private val logger = KotlinLogging.logger {}
 
+/**
+ * Turnos repository impl
+ *
+ * @constructor Create empty Turnos repository impl
+ */
 class TurnosRepositoryImpl:TurnosRepository {
 
     override fun findAll(): List<Turno> {
