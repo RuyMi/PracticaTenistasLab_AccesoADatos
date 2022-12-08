@@ -13,7 +13,7 @@ interface CrudRepository<T, ID> {
     /**
      * Find all
      *
-     * @return
+     * @return una lista de T
      */
     fun findAll(): List<T> // List<T> es una lista de T
 
@@ -21,7 +21,7 @@ interface CrudRepository<T, ID> {
      * Find by id
      *
      * @param id
-     * @return
+     * @return devuelve una entidad de tipo T
      */
     fun findById(id: ID): T? // nullable puede no existir
 
@@ -29,7 +29,7 @@ interface CrudRepository<T, ID> {
      * Findby u u i d
      *
      * @param uuid
-     * @return
+     * @return devuelve una entidad de Tipo T
      */
     fun findbyUUID(uuid: UUID): T?
 
@@ -37,7 +37,7 @@ interface CrudRepository<T, ID> {
      * Save
      *
      * @param entity
-     * @return
+     * @return guarda una entidad de tipo T
      */
     fun save(entity: T): T // Inserta si no existe, actualiza si existe
 
@@ -45,7 +45,7 @@ interface CrudRepository<T, ID> {
      * Delete
      *
      * @param entity
-     * @return
+     * @return borra una entidad de tipo T
      */
     fun delete(entity: T): Boolean // No es obligatorio el boolean
 }
