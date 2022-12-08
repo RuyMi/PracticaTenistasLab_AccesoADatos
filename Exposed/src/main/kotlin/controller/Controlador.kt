@@ -175,7 +175,7 @@ class Controlador(
      * Encontrar pedido i d
      *
      * @param id
-     * @return
+     * @return Pedidos?
      */
     fun encontrarPedidoID(id: Int): Pedidos? {
         if(id > 0){
@@ -187,7 +187,7 @@ class Controlador(
     }
 
     /**
-     * Encontrar pedido u u i d
+     * Encontrar pedido uuid
      *
      * @param uuid
      * @return
@@ -213,10 +213,10 @@ class Controlador(
     }
 
     /**
-     * Borrar pedido
+     * Borrar Pedido
      *
      * @param pedidos
-     * @return
+     * @return true si se ha borrado
      */
     fun borrarPedido(pedidos: Pedidos): Boolean {
         return PedidosRepositoryImpl.delete(pedidos)
