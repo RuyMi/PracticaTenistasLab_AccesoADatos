@@ -59,7 +59,7 @@ class TurnosRepositoryImpl:TurnosRepository {
         var result = false
         logger.debug { "delete($entity)" }
         HibernateManager.transaction {
-            val turno = manager.find(Turno::class.java, entity.id)//si no va cambiar a ID TODO MIRAR
+            val turno = manager.find(Turno::class.java, entity.id)
             turno?.let {
                 manager.remove(it)
                 result = true

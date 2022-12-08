@@ -58,7 +58,7 @@ class TareasRepositoryImpl : TareasRepository {
         var result = false
         logger.debug { "delete($entity)" }
         HibernateManager.transaction {
-            val tarea = manager.find(Tarea::class.java, entity.id)//si no va cambiar a ID TODO MIRAR
+            val tarea = manager.find(Tarea::class.java, entity.id)
             tarea?.let {
                 manager.remove(it)
                 result = true

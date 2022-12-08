@@ -58,7 +58,7 @@ class MaquinaPersonalizacionRepositoryImpl:MaquinaPersonalizacionRepository {
         var result = false
         logger.debug { "delete($entity)" }
         HibernateManager.transaction {
-            val maquinaPerso = manager.find(MaquinaPersonalizacion::class.java, entity.id)//si no va cambiar a ID TODO MIRAR
+            val maquinaPerso = manager.find(MaquinaPersonalizacion::class.java, entity.id)
             maquinaPerso?.let {
                 manager.remove(it)
                 result = true
