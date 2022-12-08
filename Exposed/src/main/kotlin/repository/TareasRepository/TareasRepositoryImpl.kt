@@ -69,8 +69,8 @@ class TareasRepositoryImpl(
             empleado = UsuarioDao.findById(entity.empleado.id)?: throw UsuarioException("El empleado no existe con id: ${entity.empleado.id}")
             turno = TurnoDao.findById(entity.turno.id)?: throw TurnoException("El turno no existe con id: ${entity.turno.id}")
             estadoCompletado = entity.estadoCompletado
-            maquinaEncordar = entity.maquinaEncordar?.let { MaquinaEncordarDao.findById(it.id) }
-            maquinaPersonalizacion = entity.maquinaPersonalizacion?.let { MaquinaPersonalizacionDao.findById(it.id) }
+            maquinaEncordar = entity.maquinaEncordar?.let { MaquinaEncordarDao.findById(it.id) ?: throw MaquinaException("La Maquina no existe con id: ${entity.maquinaEncordar.id}") }
+            maquinaPersonalizacion = entity.maquinaPersonalizacion?.let { MaquinaPersonalizacionDao.findById(it.id)?: throw MaquinaException("La Maquina no existe con id: ${entity.maquinaPersonalizacion.id}") }
             pedido = PedidosDao.findById(entity.pedido.id)?: throw PedidoException("El pedido no existe con id: ${entity.pedido.id}")
         }.fromTareaDaoToTarea()
     }
@@ -86,8 +86,8 @@ class TareasRepositoryImpl(
             empleado = UsuarioDao.findById(entity.empleado.id)?: throw UsuarioException("El empleado no existe con id: ${entity.empleado.id}")
             turno = TurnoDao.findById(entity.turno.id)?: throw TurnoException("El turno no existe con id: ${entity.turno.id}")
             estadoCompletado = entity.estadoCompletado
-            maquinaEncordar = entity.maquinaEncordar?.let { MaquinaEncordarDao.findById(it.id) }
-            maquinaPersonalizacion = entity.maquinaPersonalizacion?.let { MaquinaPersonalizacionDao.findById(it.id) }
+            maquinaEncordar = entity.maquinaEncordar?.let { MaquinaEncordarDao.findById(it.id)?: throw MaquinaException("La Maquina no existe con id: ${entity.maquinaEncordar.id}") }
+            maquinaPersonalizacion = entity.maquinaPersonalizacion?.let { MaquinaPersonalizacionDao.findById(it.id) ?: throw MaquinaException("La Maquina no existe con id: ${entity.maquinaPersonalizacion.id}") }
             pedido = PedidosDao.findById(entity.pedido.id)?: throw PedidoException("El pedido no existe con id: ${entity.pedido.id}")
         }.fromTareaDaoToTarea()
     }

@@ -9,6 +9,11 @@ import javax.persistence.TypedQuery
 
 private val logger = KotlinLogging.logger {}
 
+/**
+ * Tareas repository impl
+ *
+ * @constructor Create empty Tareas repository impl
+ */
 class TareasRepositoryImpl : TareasRepository {
 
     override fun findAll(): List<Tarea> {

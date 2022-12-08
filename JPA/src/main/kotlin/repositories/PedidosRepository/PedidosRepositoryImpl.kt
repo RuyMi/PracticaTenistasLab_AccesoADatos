@@ -9,6 +9,11 @@ import javax.persistence.TypedQuery
 
 private val logger = KotlinLogging.logger {}
 
+/**
+ * Pedidos repository impl
+ *
+ * @constructor Create empty Pedidos repository impl
+ */
 class PedidosRepositoryImpl:PedidosRepository {
 
     override fun findAll(): List<Pedidos> {

@@ -9,6 +9,11 @@ import javax.persistence.TypedQuery
 
 private val logger = KotlinLogging.logger {}
 
+/**
+ * Maquina personalizacion repository impl
+ *
+ * @constructor Create empty Maquina personalizacion repository impl
+ */
 class MaquinaPersonalizacionRepositoryImpl:MaquinaPersonalizacionRepository {
 
     override fun findAll(): List<MaquinaPersonalizacion> {

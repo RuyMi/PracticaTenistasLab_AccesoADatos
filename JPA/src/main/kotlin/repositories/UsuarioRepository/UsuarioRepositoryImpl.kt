@@ -9,6 +9,11 @@ import javax.persistence.TypedQuery
 
 private val logger = KotlinLogging.logger {}
 
+/**
+ * Usuario repository impl
+ *
+ * @constructor Create empty Usuario repository impl
+ */
 class UsuarioRepositoryImpl: UsuarioRepository {
 
 
