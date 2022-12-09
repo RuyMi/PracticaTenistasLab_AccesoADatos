@@ -2,6 +2,7 @@ package repository.UsuarioRepository
 
 import config.AppConfig
 import db.DataBaseManager
+import entities.TurnoDao
 import entities.UsuarioDao
 import models.Turno
 import models.Usuario
@@ -9,6 +10,7 @@ import models.enums.TipoPerfil
 import org.junit.jupiter.api.*
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Assertions.assertAll
+import repository.TurnosRepository.TurnosRepositoryImpl
 import services.Password
 import java.time.LocalDateTime
 import java.util.*
@@ -100,6 +102,14 @@ class UsuarioRepositoryImplTest {
         @JvmStatic
         @BeforeAll
         fun setUp(): Unit {
+            DataBaseManager.init(AppConfig.TEST2)
+            val turno = Turno(
+                0,
+                UUID.randomUUID(),
+                LocalDateTime.of(2022, 12, 5, 8, 0),
+                LocalDateTime.of(2022, 12, 5, 10, 0)
+            )
+            TurnosRepositoryImpl(TurnoDao).save(turno)
             val usuarioTest =  Usuario(
                 0,
                 UUID.fromString("492a7f86-c34d-43e3-ba77-8083a542f427"),
@@ -108,14 +118,8 @@ class UsuarioRepositoryImplTest {
                 "mario.sanchez@gmail.com",
                 Password().encriptar("marioSanchez"),
                 TipoPerfil.ENCORDADOR,
-                Turno(
-                    0,
-                    UUID.randomUUID(),
-                    LocalDateTime.of(2022, 12, 5, 8, 0),
-                    LocalDateTime.of(2022, 12, 5, 10, 0)
-                ),
+                TurnosRepositoryImpl(TurnoDao).findById(1),
             )
-            DataBaseManager.init(AppConfig.TEST2)
             val usuario = UsuarioRepositoryImpl(UsuarioDao).save(usuarioTest)
         }
     }
