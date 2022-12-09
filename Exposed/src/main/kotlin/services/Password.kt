@@ -10,7 +10,6 @@ import java.nio.charset.StandardCharsets
  */
 class Password {
 
-
     fun encriptar(originalString: String): String {
         return Hashing.sha256()
             .hashString(originalString, StandardCharsets.UTF_8)
