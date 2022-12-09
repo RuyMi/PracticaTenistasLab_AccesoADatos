@@ -15,10 +15,6 @@ object TurnoTable : IntIdTable("TURNOS") {
     val fechaFin = datetime("FechaFin")
 }
 
-
-//DAO de la entidad Producto
-
-
 /**
  * Turno dao
  *

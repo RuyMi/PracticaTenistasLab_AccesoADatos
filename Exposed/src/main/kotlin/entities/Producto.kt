@@ -11,14 +11,7 @@ object ProductoTable : IntIdTable("PRODUCTO") {
     val modelo = varchar("modelo", 100)
     val precio = double("precio")
     val stock = integer("stock")
-
-    //val id = integer("id").autoIncrement().entityId()
-
 }
-
-
-//DAO de la entidad Producto
-
 
 /**
  * Producto dao

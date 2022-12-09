@@ -8,7 +8,6 @@ import serializers.UUIDSerializer
 import java.time.LocalDate
 import java.util.*
 
-
 /**
  * Maquina encordadora
  *
