@@ -59,7 +59,6 @@ data class Tarea(
     @ManyToOne
     @JoinColumn(name = "maquinaPersonalizacion_uuid", referencedColumnName = "numSerie_Personalizacion", nullable = true)
     val maquinaPersonalizacion: MaquinaPersonalizacion?,
-
     @ManyToOne
     @JoinColumn(name = "pedidos_uuid", referencedColumnName = "UUID_Pedidos")
     val pedido:Pedidos
