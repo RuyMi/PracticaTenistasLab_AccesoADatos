@@ -187,7 +187,7 @@ class Controlador(
     }
 
     /**
-     * Encontrar pedido u u i d
+     * Encontrar pedido uuid
      *
      * @param uuid
      * @return devuelve un Pedido
@@ -213,7 +213,7 @@ class Controlador(
     }
 
     /**
-     * Borrar pedido
+     * Borrar Pedido
      *
      * @param pedidos
      * @return devuelve true si borra un pedido
