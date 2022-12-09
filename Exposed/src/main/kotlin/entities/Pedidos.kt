@@ -17,16 +17,7 @@ object PedidosTable : IntIdTable("PEDIDOS") {
     val fechaEntrega = date("fechaEntrega").nullable()
     val precio = double("precio")
     val usuario = reference("uuid_Usuario", UsuarioTable)
-    //val tareas = reference("uuid_tarea", TareaTable)
-   // val productos = reference("uuid_producto", ProductoTable)
-
-
-    //val id = integer("id").autoIncrement().entityId()
 }
-
-
-//DAO de la entidad Producto
-
 
 /**
  * Pedidos dao
@@ -35,7 +26,7 @@ object PedidosTable : IntIdTable("PEDIDOS") {
  *
  * @param id
  */
-class PedidosDao(id: EntityID<Int>): IntEntity(id) {
+class PedidosDao(id: EntityID<Int>) : IntEntity(id) {
     companion object : IntEntityClass<PedidosDao>(PedidosTable)
 
     var uuid by PedidosTable.uuid
@@ -45,10 +36,5 @@ class PedidosDao(id: EntityID<Int>): IntEntity(id) {
     var fechaEntrega by PedidosTable.fechaEntrega
     var precio by PedidosTable.precio
     var usuario by UsuarioDao referencedOn PedidosTable.usuario
-
-    //var tareas by TareaDao referencedOn TareaTable.uuidTarea
-   // var productos by ProductoDao referencedOn ProductoTable.uuid
-   // meter el pedido en producto
-
 }
 

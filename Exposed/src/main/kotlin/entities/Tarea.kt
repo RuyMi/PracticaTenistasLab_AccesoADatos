@@ -21,11 +21,6 @@ object TareaTable : IntIdTable("TAREA") {
     val pedido=reference("uuid_Pedido",PedidosTable)
 
 }
-
-
-//DAO de la entidad Producto
-
-
 /**
  * Tarea dao
  *

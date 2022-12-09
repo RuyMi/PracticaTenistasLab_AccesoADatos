@@ -13,13 +13,8 @@ object UsuarioTable : IntIdTable("USUARIO") {
     val email = varchar("email", 100)
     val password = varchar("password", 100)
     val perfil = enumeration<TipoPerfil>("perfil")
-    val turno= reference("uuidTurno",TurnoTable).nullable()
-
+    val turno = reference("uuidTurno", TurnoTable).nullable()
 }
-
-
-    //DAO de la entidad Usuario
-
 
 /**
  * Usuario dao
@@ -28,17 +23,16 @@ object UsuarioTable : IntIdTable("USUARIO") {
  *
  * @param id
  */
-class UsuarioDao(id: EntityID<Int>): IntEntity(id){
+class UsuarioDao(id: EntityID<Int>) : IntEntity(id) {
     companion object : IntEntityClass<UsuarioDao>(UsuarioTable)
+
     var uuid by UsuarioTable.uuid
     var nombre by UsuarioTable.nombre
     var apellido by UsuarioTable.apellido
     var email by UsuarioTable.email
     var password by UsuarioTable.password
     var perfil by UsuarioTable.perfil
-    var turno by TurnoDao optionalReferencedOn  UsuarioTable.turno
-
-
+    var turno by TurnoDao optionalReferencedOn UsuarioTable.turno
 
 
 }

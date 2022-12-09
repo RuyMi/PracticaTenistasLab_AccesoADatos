@@ -1,7 +1,4 @@
-
 //TODO Documentacion y video
-
-
 
 
 import controller.Controlador
@@ -23,10 +20,11 @@ import services.Password
 import java.util.*
 import kotlin.system.exitProcess
 
-private val json = Json{
+private val json = Json {
     prettyPrint = true
     allowStructuredMapKeys = true
 }
+
 /**
  * Main
  *
@@ -51,9 +49,11 @@ fun main(args: Array<String>) {
     val tareas = controlador.listarTareas().filter { it.pedido.uuid == pedido!!.uuid }
     val tarea1 = json.encodeToString(pedido)
     val tarea2 = json.encodeToString(tareas)
-    println("""Pedido: $tarea1
+    println(
+        """Pedido: $tarea1
         Las tareas de este producto eran: $tarea2
-    """.trimMargin())
+    """.trimMargin()
+    )
 
     //Listado de pedidos pendientes en JSON
     val pedidosPen = controlador.listarPedidos().filter { it.estado == TipoEstado.EN_PROCESO }
@@ -68,33 +68,35 @@ fun main(args: Array<String>) {
     //Listado de productos y servicios en JSON
     val productos = controlador.listarProductos()
     val productosjson = json.encodeToString(productos)
-    println("""Productos disponibles: 
+    println(
+        """Productos disponibles: 
         |$productosjson
         |
         |Servicios que ofrecemos:
         | -> Adquisición
         | -> Personalizacion
         | -> Encordar
-    """.trimMargin())
+    """.trimMargin()
+    )
 
     //Listado de asignaciones para los encordadores por fecha en JSON
     //* Hemos entendido que debemos sacar por cada empleado, sus tareas realizadas ordenadas por hora
 
     val tareasByEmpleadoSortFecha = controlador.listarTareas().sortedBy { it.turno.fechaFin }.groupBy { it.empleado }
-    val tareasByEmpleadoSortFechajson =  json.encodeToString(tareasByEmpleadoSortFecha)
+    val tareasByEmpleadoSortFechajson = json.encodeToString(tareasByEmpleadoSortFecha)
     println("""Listado de las tareas agrupadas por empleado y ordenadas por fecha: $tareasByEmpleadoSortFechajson""")
 
 
     //mostrarMenuPrincipal(usuarioActual)
 
 
-
 }
 
 fun mostrarMenuPrincipal(usuario: Usuario) {
-    when(usuario.perfil){
-        TipoPerfil.ENCORDADOR ->{
-            println("""
+    when (usuario.perfil) {
+        TipoPerfil.ENCORDADOR -> {
+            println(
+                """
                 Seleccione una de las siguientes opciones:
                 1. Crear Pedido
                 2. Modificar Pedido
@@ -107,10 +109,13 @@ fun mostrarMenuPrincipal(usuario: Usuario) {
                 9. Listar datos (Bloqueado)
                 Cambiar. Cambiar usuario
                 Exit. Salir del programa
-            """.trimIndent())
+            """.trimIndent()
+            )
         }
-        TipoPerfil.USUARIO ->{
-            println("""
+
+        TipoPerfil.USUARIO -> {
+            println(
+                """
                 Seleccione una de las siguientes opciones:
                 1. Crear Pedido
                 2. Modificar Pedido 
@@ -123,10 +128,13 @@ fun mostrarMenuPrincipal(usuario: Usuario) {
                 9. Listar datos (Bloqueado)
                 Cambiar. Cambiar usuario
                 Exit. Salir del programa
-            """.trimIndent())
+            """.trimIndent()
+            )
         }
-        TipoPerfil.ADMINISTRADOR ->{
-            println("""
+
+        TipoPerfil.ADMINISTRADOR -> {
+            println(
+                """
                 Seleccione una de las siguientes opciones:
                 1. Crear Pedido
                 2. Modificar Pedido 
@@ -139,7 +147,8 @@ fun mostrarMenuPrincipal(usuario: Usuario) {
                 9. Listar datos 
                 Cambiar. Cambiar usuario
                 Exit. Salir del programa
-            """.trimIndent())
+            """.trimIndent()
+            )
         }
     }
 }
@@ -149,11 +158,11 @@ fun iniciarSesion(): Usuario {
     val usuario = readln()
     val password = Password().encriptar(readln())
     println(password)
-    try{
+    try {
         val coincidente = UsuarioRepositoryImpl().findAll().first { it.email == usuario && it.password == password }
         println("Bienvenido: ${coincidente.nombre} ${coincidente.apellido}, eres un ${coincidente.perfil}")
         return coincidente
-    }catch (e: Exception){
+    } catch (e: Exception) {
         println("Usuario no válido... Saliendo del sistema")
         exitProcess(0)
     }
@@ -196,7 +205,7 @@ private fun meterDatos(controlador: Controlador) {
  *
  */
 fun initDataBase() {
-    val meterAdmin =   Usuario(
+    val meterAdmin = Usuario(
         0,
         UUID.randomUUID(),
         "Administrador",
