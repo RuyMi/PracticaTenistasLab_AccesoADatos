@@ -1,7 +1,7 @@
 # Practica Acceso a datos TenistasLab
 
 ## Realizado por:
-- Alejandro Abad
+- Alejandro López Abad
 - Rubén García-Redondo Marín
 
 En esta práctica gestionaremos una tienda de tenistas con bases de datos utilizando 2 tecnologías JPA y Exposed.
